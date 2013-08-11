@@ -91,6 +91,20 @@ static NSInteger seed = 0;
 -(void)loadSounds{
     NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound0);
+    soundPath = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound1);
+    soundPath = [[NSBundle mainBundle] pathForResource:@"2" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound2);
+    soundPath = [[NSBundle mainBundle] pathForResource:@"3" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound3);
+    soundPath = [[NSBundle mainBundle] pathForResource:@"4" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound4);
+    soundPath = [[NSBundle mainBundle] pathForResource:@"5" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound5);
+    soundPath = [[NSBundle mainBundle] pathForResource:@"6" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound6);
+    soundPath = [[NSBundle mainBundle] pathForResource:@"7" ofType:@"wav"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound7);
 }
 
 -(void)shrinkBacking:(UIButton *)b {
@@ -203,6 +217,27 @@ static NSInteger seed = 0;
         case 0:
             AudioServicesPlaySystemSound(sound0);
             break;
+        case 1:
+            AudioServicesPlaySystemSound(sound1);
+            break;
+        case 2:
+            AudioServicesPlaySystemSound(sound2);
+            break;
+        case 3:
+            AudioServicesPlaySystemSound(sound3);
+            break;
+        case 4:
+            AudioServicesPlaySystemSound(sound4);
+            break;
+        case 5:
+            AudioServicesPlaySystemSound(sound5);
+            break;
+        case 6:
+            AudioServicesPlaySystemSound(sound6);
+            break;
+        case 7:
+            AudioServicesPlaySystemSound(sound7);
+            break;
     }
     
 }
@@ -296,6 +331,7 @@ static NSInteger seed = 0;
 -(void)dealloc {
     self.atoms = nil;
     self.grid = nil;
+    [self.timer invalidate];
     self.timer = nil;
     self.buttonsGrid = nil;
     AudioServicesDisposeSystemSoundID(sound0);
