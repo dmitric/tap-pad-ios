@@ -8,12 +8,6 @@
 
 #import "Grid.h"
 
-@interface Grid ()
-
-@property (nonatomic, strong) NSMutableArray *rows;
-
-@end
-
 @implementation Grid
 
 -(id) initWithDimension:(NSInteger)dim {
@@ -33,12 +27,16 @@
     return self;
 }
 
--(id) objectAtIndex:(NSUInteger)idx{
-    return self.rows[idx];
-}
-
 -(void) removeObjectWithId:(NSString *)idKey fromRow:(NSInteger)row andColumn:(NSInteger)col {
     [self.rows[row][col] removeObjectForKey:idKey];
+}
+
+-(void)addObject:(id)obj withId:(NSString *)idKey toRow:(NSInteger)row andColumn:(NSInteger)col{
+    self.rows[row][col][idKey] = obj;
+}
+
+-(NSInteger)countAtRow:(NSInteger)row andCol:(NSInteger)col {
+    return [self.rows[row][col] allKeys].count;
 }
 
 

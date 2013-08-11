@@ -28,6 +28,7 @@
 		6A7B39BA17B78F3E00F088A6 /* 7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39B117B78F3E00F088A6 /* 7.wav */; };
 		6A7B39BE17B7908100F088A6 /* Atom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B39BD17B7908100F088A6 /* Atom.m */; };
 		6A7B39C317B79B1D00F088A6 /* TapPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39C117B79B1D00F088A6 /* TapPadViewController.xib */; };
+		6A7B39C517B7B2E600F088A6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B39C417B7B2E600F088A6 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		6A7B39BC17B7908100F088A6 /* Atom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atom.h; sourceTree = "<group>"; };
 		6A7B39BD17B7908100F088A6 /* Atom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Atom.m; sourceTree = "<group>"; };
 		6A7B39C117B79B1D00F088A6 /* TapPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TapPadViewController.xib; sourceTree = SOURCE_ROOT; };
+		6A7B39C417B7B2E600F088A6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A7B39C517B7B2E600F088A6 /* AudioToolbox.framework in Frameworks */,
 				6A7B398417B7815600F088A6 /* UIKit.framework in Frameworks */,
 				6A7B398617B7815600F088A6 /* Foundation.framework in Frameworks */,
 				6A7B398817B7815600F088A6 /* CoreGraphics.framework in Frameworks */,
@@ -95,6 +98,7 @@
 		6A7B398217B7815600F088A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A7B39C417B7B2E600F088A6 /* AudioToolbox.framework */,
 				6A7B398317B7815600F088A6 /* UIKit.framework */,
 				6A7B398517B7815600F088A6 /* Foundation.framework */,
 				6A7B398717B7815600F088A6 /* CoreGraphics.framework */,

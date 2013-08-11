@@ -14,10 +14,12 @@
 
 -(id)initWithDimension:(NSInteger)dim;
 
--(id) objectAtIndex:(NSUInteger)idx;
-
 -(void) removeObjectWithId:(NSString *)idKey fromRow:(NSInteger)row andColumn:(NSInteger)col;
 
--(void)addObjectWithId:(NSString *)idKey toRow:(NSInteger)row andColumn:(NSInteger)col;
+-(void)addObject:(id)obj withId:(NSString *)idKey toRow:(NSInteger)row andColumn:(NSInteger)col;
+
+-(NSInteger)countAtRow:(NSInteger)row andCol:(NSInteger)col;
+
+@property (nonatomic, strong) NSMutableArray *rows;
 
 @end
