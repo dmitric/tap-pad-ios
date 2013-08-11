@@ -172,7 +172,23 @@ static NSInteger seed = 0;
     [self.grid addObject:atom withId:atomId toRow:curY andColumn:curX];
 }
 
--(void)manageHeadOnCollisions:(Atom *)a {
+-(void)manageHeadOnCollisions:(Atom *)atom {
+    int nextX = [atom nextX];
+    int nextY = [atom nextY];
+    if ([self isValidMove:nextX and:nextY]){
+        if ([self.grid countAtRow:nextY andCol:nextX] >= 1){
+            NSMutableDictionary *d = self.grid.rows[nextY][nextX];
+            for (NSString *otherAtomId in [d allKeys]){
+                Atom *otherAtom = self.grid.rows[nextY][nextX][otherAtomId];
+                BOOL diffDirection = atom.direction != otherAtom.direction;
+                BOOL sameOrientation = atom.vertical == otherAtom.vertical;
+                if (diffDirection && sameOrientation){
+                    [otherAtom changeDirection];
+                }
+            }
+            [atom changeDirection];
+        }
+    }
     
 }
 
@@ -191,9 +207,15 @@ static NSInteger seed = 0;
     if (count == 0){
         [b setBackgroundColor:bgColor];
     }else if(count == 1){
-        [b setBackgroundColor:[UIColor blueColor]];
+        [b setBackgroundColor:[UIColor colorWithRed:194/256.
+                                              green:221./256.
+                                               blue:255./256.
+                                              alpha:0.97]];
     }else{
-        [b setBackgroundColor:[UIColor redColor]];
+        [b setBackgroundColor:[UIColor colorWithRed:249./256.
+                                              green:83./256.
+                                               blue:59./256.
+                                              alpha:1.0]];
     }
     
 }
@@ -207,6 +229,18 @@ static NSInteger seed = 0;
 }
 
 -(void)manageIntersections {
+    
+    for (int j = 0; j < gridDimension; j++) {
+        for (int i = 0; i < gridDimension; i++){
+            int sizeOfCell = [self.grid countAtRow:j andCol:i];
+            if (sizeOfCell > 1){
+                NSDictionary *d = self.grid.rows[j][i];
+                for (Atom *atom in [d allValues]){
+                    [atom collide];
+                }
+            }
+        }
+    }
     
 }
 
@@ -232,6 +266,10 @@ static NSInteger seed = 0;
     }
 }
 
+-(void)purgeOldAtoms {
+    
+}
+
 -(void)dealloc {
     self.atoms = nil;
     self.grid = nil;
@@ -249,7 +287,7 @@ static NSInteger seed = 0;
 
 -(void)step {
     if (self.atoms.count > 0){
-        //purge old atoms
+        [self purgeOldAtoms];
         for (Atom * a in self.atoms){
             [self moveAtom:a];
         }
