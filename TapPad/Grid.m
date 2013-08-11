@@ -17,6 +17,7 @@
 @implementation Grid
 
 -(id) initWithDimension:(NSInteger)dim {
+    self.dimension = dim;
     if(self = [super init]){
         //Create our grid
         self.rows = [[NSMutableArray alloc] initWithCapacity:dim];
@@ -28,6 +29,14 @@
         }];
     }
     return self;
+}
+
+-(id) objectAtIndex:(NSUInteger)idx{
+    return self.rows[idx];
+}
+
+-(void) removeObjectWithId:(NSString *)idKey fromRow:(NSInteger)row andColumn:(NSInteger)col {
+    [self.rows[row][col] removeObjectForKey:idKey];
 }
 
 

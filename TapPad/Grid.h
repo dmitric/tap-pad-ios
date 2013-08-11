@@ -10,6 +10,12 @@
 
 @interface Grid : NSObject
 
+@property (nonatomic, assign) NSInteger dimension;
+
 -(id)initWithDimension:(NSInteger)dim;
+
+-(id) objectAtIndex:(NSUInteger)idx;
+
+-(void) removeObjectWithId:(NSString *)idKey fromRow:(NSInteger)row andColumn:(NSInteger)col;
 
 @end

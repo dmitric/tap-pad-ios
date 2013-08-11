@@ -19,6 +19,15 @@
 		6A7B399D17B7815600F088A6 /* TapPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B399C17B7815600F088A6 /* TapPadViewController.m */; };
 		6A7B39A017B7815600F088A6 /* TapPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399E17B7815600F088A6 /* TapPadViewController.xib */; };
 		6A7B39A817B788E200F088A6 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B39A717B788E200F088A6 /* Grid.m */; };
+		6A7B39B317B78F3E00F088A6 /* 0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39AA17B78F3E00F088A6 /* 0.wav */; };
+		6A7B39B417B78F3E00F088A6 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39AB17B78F3E00F088A6 /* 1.wav */; };
+		6A7B39B517B78F3E00F088A6 /* 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39AC17B78F3E00F088A6 /* 2.wav */; };
+		6A7B39B617B78F3E00F088A6 /* 3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39AD17B78F3E00F088A6 /* 3.wav */; };
+		6A7B39B717B78F3E00F088A6 /* 4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39AE17B78F3E00F088A6 /* 4.wav */; };
+		6A7B39B817B78F3E00F088A6 /* 5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39AF17B78F3E00F088A6 /* 5.wav */; };
+		6A7B39B917B78F3E00F088A6 /* 6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39B017B78F3E00F088A6 /* 6.wav */; };
+		6A7B39BA17B78F3E00F088A6 /* 7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39B117B78F3E00F088A6 /* 7.wav */; };
+		6A7B39BB17B78F3E00F088A6 /* 8.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39B217B78F3E00F088A6 /* 8.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +49,15 @@
 		6A7B399F17B7815600F088A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TapPadViewController.xib; sourceTree = "<group>"; };
 		6A7B39A617B788E200F088A6 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
 		6A7B39A717B788E200F088A6 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
+		6A7B39AA17B78F3E00F088A6 /* 0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 0.wav; sourceTree = "<group>"; };
+		6A7B39AB17B78F3E00F088A6 /* 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1.wav; sourceTree = "<group>"; };
+		6A7B39AC17B78F3E00F088A6 /* 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 2.wav; sourceTree = "<group>"; };
+		6A7B39AD17B78F3E00F088A6 /* 3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 3.wav; sourceTree = "<group>"; };
+		6A7B39AE17B78F3E00F088A6 /* 4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 4.wav; sourceTree = "<group>"; };
+		6A7B39AF17B78F3E00F088A6 /* 5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 5.wav; sourceTree = "<group>"; };
+		6A7B39B017B78F3E00F088A6 /* 6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 6.wav; sourceTree = "<group>"; };
+		6A7B39B117B78F3E00F088A6 /* 7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 7.wav; sourceTree = "<group>"; };
+		6A7B39B217B78F3E00F088A6 /* 8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 8.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +104,7 @@
 		6A7B398917B7815600F088A6 /* TapPad */ = {
 			isa = PBXGroup;
 			children = (
+				6A7B39A917B78F3E00F088A6 /* Sounds */,
 				6A7B399217B7815600F088A6 /* AppDelegate.h */,
 				6A7B399317B7815600F088A6 /* AppDelegate.m */,
 				6A7B399B17B7815600F088A6 /* TapPadViewController.h */,
@@ -110,6 +129,22 @@
 				6A7B399917B7815600F088A6 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6A7B39A917B78F3E00F088A6 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6A7B39AA17B78F3E00F088A6 /* 0.wav */,
+				6A7B39AB17B78F3E00F088A6 /* 1.wav */,
+				6A7B39AC17B78F3E00F088A6 /* 2.wav */,
+				6A7B39AD17B78F3E00F088A6 /* 3.wav */,
+				6A7B39AE17B78F3E00F088A6 /* 4.wav */,
+				6A7B39AF17B78F3E00F088A6 /* 5.wav */,
+				6A7B39B017B78F3E00F088A6 /* 6.wav */,
+				6A7B39B117B78F3E00F088A6 /* 7.wav */,
+				6A7B39B217B78F3E00F088A6 /* 8.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +203,15 @@
 				6A7B399817B7815600F088A6 /* Default@2x.png in Resources */,
 				6A7B399A17B7815600F088A6 /* Default-568h@2x.png in Resources */,
 				6A7B39A017B7815600F088A6 /* TapPadViewController.xib in Resources */,
+				6A7B39B317B78F3E00F088A6 /* 0.wav in Resources */,
+				6A7B39B417B78F3E00F088A6 /* 1.wav in Resources */,
+				6A7B39B517B78F3E00F088A6 /* 2.wav in Resources */,
+				6A7B39B617B78F3E00F088A6 /* 3.wav in Resources */,
+				6A7B39B717B78F3E00F088A6 /* 4.wav in Resources */,
+				6A7B39B817B78F3E00F088A6 /* 5.wav in Resources */,
+				6A7B39B917B78F3E00F088A6 /* 6.wav in Resources */,
+				6A7B39BA17B78F3E00F088A6 /* 7.wav in Resources */,
+				6A7B39BB17B78F3E00F088A6 /* 8.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
