@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A7B398417B7815600F088A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398317B7815600F088A6 /* UIKit.framework */; };
+		6A7B398617B7815600F088A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398517B7815600F088A6 /* Foundation.framework */; };
+		6A7B398817B7815600F088A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398717B7815600F088A6 /* CoreGraphics.framework */; };
+		6A7B398E17B7815600F088A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B398C17B7815600F088A6 /* InfoPlist.strings */; };
+		6A7B399017B7815600F088A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B398F17B7815600F088A6 /* main.m */; };
+		6A7B399417B7815600F088A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B399317B7815600F088A6 /* AppDelegate.m */; };
+		6A7B399617B7815600F088A6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399517B7815600F088A6 /* Default.png */; };
+		6A7B399817B7815600F088A6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399717B7815600F088A6 /* Default@2x.png */; };
+		6A7B399A17B7815600F088A6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399917B7815600F088A6 /* Default-568h@2x.png */; };
+		6A7B399D17B7815600F088A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B399C17B7815600F088A6 /* ViewController.m */; };
+		6A7B39A017B7815600F088A6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399E17B7815600F088A6 /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6A7B398017B7815600F088A6 /* TapPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A7B398317B7815600F088A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6A7B398517B7815600F088A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6A7B398717B7815600F088A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6A7B398B17B7815600F088A6 /* TapPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TapPad-Info.plist"; sourceTree = "<group>"; };
+		6A7B398D17B7815600F088A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6A7B398F17B7815600F088A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6A7B399117B7815600F088A6 /* TapPad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TapPad-Prefix.pch"; sourceTree = "<group>"; };
+		6A7B399217B7815600F088A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6A7B399317B7815600F088A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6A7B399517B7815600F088A6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		6A7B399717B7815600F088A6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		6A7B399917B7815600F088A6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		6A7B399B17B7815600F088A6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6A7B399C17B7815600F088A6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6A7B399F17B7815600F088A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6A7B397D17B7815600F088A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A7B398417B7815600F088A6 /* UIKit.framework in Frameworks */,
+				6A7B398617B7815600F088A6 /* Foundation.framework in Frameworks */,
+				6A7B398817B7815600F088A6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6A7B397717B7815600F088A6 = {
+			isa = PBXGroup;
+			children = (
+				6A7B398917B7815600F088A6 /* TapPad */,
+				6A7B398217B7815600F088A6 /* Frameworks */,
+				6A7B398117B7815600F088A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6A7B398117B7815600F088A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A7B398017B7815600F088A6 /* TapPad.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6A7B398217B7815600F088A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A7B398317B7815600F088A6 /* UIKit.framework */,
+				6A7B398517B7815600F088A6 /* Foundation.framework */,
+				6A7B398717B7815600F088A6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6A7B398917B7815600F088A6 /* TapPad */ = {
+			isa = PBXGroup;
+			children = (
+				6A7B399217B7815600F088A6 /* AppDelegate.h */,
+				6A7B399317B7815600F088A6 /* AppDelegate.m */,
+				6A7B399B17B7815600F088A6 /* ViewController.h */,
+				6A7B399C17B7815600F088A6 /* ViewController.m */,
+				6A7B399E17B7815600F088A6 /* ViewController.xib */,
+				6A7B398A17B7815600F088A6 /* Supporting Files */,
+			);
+			path = TapPad;
+			sourceTree = "<group>";
+		};
+		6A7B398A17B7815600F088A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A7B398B17B7815600F088A6 /* TapPad-Info.plist */,
+				6A7B398C17B7815600F088A6 /* InfoPlist.strings */,
+				6A7B398F17B7815600F088A6 /* main.m */,
+				6A7B399117B7815600F088A6 /* TapPad-Prefix.pch */,
+				6A7B399517B7815600F088A6 /* Default.png */,
+				6A7B399717B7815600F088A6 /* Default@2x.png */,
+				6A7B399917B7815600F088A6 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6A7B397F17B7815600F088A6 /* TapPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A7B39A317B7815600F088A6 /* Build configuration list for PBXNativeTarget "TapPad" */;
+			buildPhases = (
+				6A7B397C17B7815600F088A6 /* Sources */,
+				6A7B397D17B7815600F088A6 /* Frameworks */,
+				6A7B397E17B7815600F088A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TapPad;
+			productName = TapPad;
+			productReference = 6A7B398017B7815600F088A6 /* TapPad.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6A7B397817B7815600F088A6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Dmitri Cherniak";
+			};
+			buildConfigurationList = 6A7B397B17B7815600F088A6 /* Build configuration list for PBXProject "TapPad" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6A7B397717B7815600F088A6;
+			productRefGroup = 6A7B398117B7815600F088A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6A7B397F17B7815600F088A6 /* TapPad */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6A7B397E17B7815600F088A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A7B398E17B7815600F088A6 /* InfoPlist.strings in Resources */,
+				6A7B399617B7815600F088A6 /* Default.png in Resources */,
+				6A7B399817B7815600F088A6 /* Default@2x.png in Resources */,
+				6A7B399A17B7815600F088A6 /* Default-568h@2x.png in Resources */,
+				6A7B39A017B7815600F088A6 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A7B397C17B7815600F088A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A7B399017B7815600F088A6 /* main.m in Sources */,
+				6A7B399417B7815600F088A6 /* AppDelegate.m in Sources */,
+				6A7B399D17B7815600F088A6 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6A7B398C17B7815600F088A6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A7B398D17B7815600F088A6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6A7B399E17B7815600F088A6 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A7B399F17B7815600F088A6 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6A7B39A117B7815600F088A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		6A7B39A217B7815600F088A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6A7B39A417B7815600F088A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TapPad/TapPad-Prefix.pch";
+				INFOPLIST_FILE = "TapPad/TapPad-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6A7B39A517B7815600F088A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TapPad/TapPad-Prefix.pch";
+				INFOPLIST_FILE = "TapPad/TapPad-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6A7B397B17B7815600F088A6 /* Build configuration list for PBXProject "TapPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A7B39A117B7815600F088A6 /* Debug */,
+				6A7B39A217B7815600F088A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A7B39A317B7815600F088A6 /* Build configuration list for PBXNativeTarget "TapPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A7B39A417B7815600F088A6 /* Debug */,
+				6A7B39A517B7815600F088A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6A7B397817B7815600F088A6 /* Project object */;
+}
