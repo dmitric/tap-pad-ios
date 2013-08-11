@@ -20,3 +20,8 @@ You'd be surprised how beautiful some of these "random" yet 100% reproducible pa
 
 
 ![A slick screenshot](http://i.imgur.com/GydrFbG.png)
+
+Web version
+--------------
+
+There's also a web version [here](http://github.com/dmitric/tap-pad-web)
