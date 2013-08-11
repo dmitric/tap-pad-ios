@@ -11,5 +11,6 @@
 @interface TapPadViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UIButton *playControlButton;
+@property (nonatomic, weak) IBOutlet UIView *buttonEnclosure;
 
 @end

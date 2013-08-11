@@ -18,4 +18,6 @@
 
 -(void) removeObjectWithId:(NSString *)idKey fromRow:(NSInteger)row andColumn:(NSInteger)col;
 
+-(void)addObjectWithId:(NSString *)idKey toRow:(NSInteger)row andColumn:(NSInteger)col;
+
 @end

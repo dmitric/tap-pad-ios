@@ -21,12 +21,14 @@
     if(self = [super init]){
         //Create our grid
         self.rows = [[NSMutableArray alloc] initWithCapacity:dim];
-        [self.rows enumerateObjectsUsingBlock:^(id obj, NSUInteger idy, BOOL *stop) {
-            self.rows[idy] = [[NSMutableArray alloc] initWithCapacity:dim];
-            [self.rows[idy] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                self.rows[idy][idx] = [@{} mutableCopy];
-            }];
-        }];
+        for (int j = 0; j < dim; j++) {
+            NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:dim];
+            for (int i = 0; i < dim; i++){
+                arr[i] = [@{} mutableCopy];
+            }
+            [self.rows addObject:arr];
+            
+        }
     }
     return self;
 }
