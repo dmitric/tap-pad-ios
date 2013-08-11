@@ -12,5 +12,9 @@
 
 @property (nonatomic, weak) IBOutlet UIButton *playControlButton;
 @property (nonatomic, weak) IBOutlet UIView *buttonEnclosure;
+@property (nonatomic, assign) CGFloat rate;
+@property (nonatomic, assign) NSInteger collisionsLimit;
+@property (nonatomic, assign) NSInteger movesLimit;
+
 
 @end

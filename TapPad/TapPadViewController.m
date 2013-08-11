@@ -43,6 +43,8 @@ static NSInteger seed = 0;
 {
     
     [super viewDidLoad];
+    self.collisionsLimit = 100;
+    self.movesLimit = 300;
 	// Do any additional setup after loading the view, typically from a nib.
     self.grid = [[Grid alloc] initWithDimension:gridDimension];
     self.buttonsGrid = [[NSMutableArray alloc] initWithCapacity:gridDimension];
@@ -80,6 +82,7 @@ static NSInteger seed = 0;
     
     [self.playControlButton setTitle:@"PLAY" forState:UIControlStateHighlighted];
     [self.playControlButton setTitle:@"PAUSE" forState:UIControlStateSelected];
+    self.playControlButton.hidden = YES;
     self.atoms = [[NSMutableArray alloc] initWithCapacity:5];
     self.timer = [[NSTimer alloc] init];
     [self loadSounds];
@@ -90,8 +93,7 @@ static NSInteger seed = 0;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound0);
 }
 
--(void)shrinkBacking:(UIButton *)b{
-    NSLog(@"shrink now");
+-(void)shrinkBacking:(UIButton *)b {
     int y = b.tag/10 - 1;
     int x = b.tag % 10;
     UIView *v = self.buttonsGrid[y][x];
@@ -129,6 +131,10 @@ static NSInteger seed = 0;
     int x = b.tag % 10;
     [self resize:b];
     [self addAtomWithX:x andY:y];
+    if(self.playControlButton.hidden) {
+        [self toggleTime:self.playControlButton];
+        self.playControlButton.hidden = NO;
+    }
     
 }
 
@@ -203,20 +209,24 @@ static NSInteger seed = 0;
 
 -(void)renderAtX:(NSInteger)x andY:(NSInteger)y {
     NSInteger count = [self.grid countAtRow:y andCol:x];
-    UIButton * b = self.buttonsGrid[y][x];
+    UIView * b = self.buttonsGrid[y][x];
+    UIColor *c = nil;
     if (count == 0){
-        [b setBackgroundColor:bgColor];
+        c = bgColor;
     }else if(count == 1){
-        [b setBackgroundColor:[UIColor colorWithRed:194/256.
-                                              green:221./256.
-                                               blue:255./256.
-                                              alpha:0.97]];
+        c = [UIColor colorWithRed:194/256.
+                            green:221./256.
+                            blue:255./256.
+                            alpha:0.97];
     }else{
-        [b setBackgroundColor:[UIColor colorWithRed:249./256.
-                                              green:83./256.
-                                               blue:59./256.
-                                              alpha:1.0]];
+        c = [UIColor colorWithRed:249./256.
+                           green:83./256.
+                            blue:59./256.
+                           alpha:1.0];
     }
+    [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [b setBackgroundColor:c];
+    } completion:^(BOOL finished) { }];
     
 }
 
@@ -267,6 +277,19 @@ static NSInteger seed = 0;
 }
 
 -(void)purgeOldAtoms {
+    NSMutableArray *keep = [@[] mutableCopy];
+    
+    for (Atom *atom in self.atoms){
+        if (atom.collisions > self.collisionsLimit ||
+            atom.moves > self.movesLimit) {
+            [self.grid removeObjectWithId:[@(atom.identifier) description]
+                                  fromRow:atom.y andColumn:atom.x];
+            
+        }else{
+            [keep addObject:atom];
+        }
+    }
+    self.atoms = keep;
     
 }
 
