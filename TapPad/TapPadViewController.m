@@ -6,18 +6,25 @@
 //  Copyright (c) 2013 Dmitri Cherniak. All rights reserved.
 //
 
-#import "ViewController.h"
+#define gridDimension 8
 
-@interface ViewController ()
+#import "TapPadViewController.h"
+#import "Grid.h"
+
+@interface TapPadViewController ()
+
+@property (nonatomic, strong) NSMutableArray *atoms;
+@property (nonatomic, strong) Grid *grid;
 
 @end
 
-@implementation ViewController
+@implementation TapPadViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.atoms = [[NSMutableArray alloc] initWithCapacity:10];
 }
 
 - (void)didReceiveMemoryWarning

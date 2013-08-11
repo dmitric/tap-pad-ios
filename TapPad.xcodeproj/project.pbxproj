@@ -16,8 +16,9 @@
 		6A7B399617B7815600F088A6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399517B7815600F088A6 /* Default.png */; };
 		6A7B399817B7815600F088A6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399717B7815600F088A6 /* Default@2x.png */; };
 		6A7B399A17B7815600F088A6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399917B7815600F088A6 /* Default-568h@2x.png */; };
-		6A7B399D17B7815600F088A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B399C17B7815600F088A6 /* ViewController.m */; };
-		6A7B39A017B7815600F088A6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399E17B7815600F088A6 /* ViewController.xib */; };
+		6A7B399D17B7815600F088A6 /* TapPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B399C17B7815600F088A6 /* TapPadViewController.m */; };
+		6A7B39A017B7815600F088A6 /* TapPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399E17B7815600F088A6 /* TapPadViewController.xib */; };
+		6A7B39A817B788E200F088A6 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B39A717B788E200F088A6 /* Grid.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +35,11 @@
 		6A7B399517B7815600F088A6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6A7B399717B7815600F088A6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6A7B399917B7815600F088A6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		6A7B399B17B7815600F088A6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6A7B399C17B7815600F088A6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6A7B399F17B7815600F088A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		6A7B399B17B7815600F088A6 /* TapPadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapPadViewController.h; sourceTree = "<group>"; };
+		6A7B399C17B7815600F088A6 /* TapPadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TapPadViewController.m; sourceTree = "<group>"; };
+		6A7B399F17B7815600F088A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TapPadViewController.xib; sourceTree = "<group>"; };
+		6A7B39A617B788E200F088A6 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
+		6A7B39A717B788E200F088A6 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +88,12 @@
 			children = (
 				6A7B399217B7815600F088A6 /* AppDelegate.h */,
 				6A7B399317B7815600F088A6 /* AppDelegate.m */,
-				6A7B399B17B7815600F088A6 /* ViewController.h */,
-				6A7B399C17B7815600F088A6 /* ViewController.m */,
-				6A7B399E17B7815600F088A6 /* ViewController.xib */,
+				6A7B399B17B7815600F088A6 /* TapPadViewController.h */,
+				6A7B399C17B7815600F088A6 /* TapPadViewController.m */,
+				6A7B399E17B7815600F088A6 /* TapPadViewController.xib */,
 				6A7B398A17B7815600F088A6 /* Supporting Files */,
+				6A7B39A617B788E200F088A6 /* Grid.h */,
+				6A7B39A717B788E200F088A6 /* Grid.m */,
 			);
 			path = TapPad;
 			sourceTree = "<group>";
@@ -162,7 +167,7 @@
 				6A7B399617B7815600F088A6 /* Default.png in Resources */,
 				6A7B399817B7815600F088A6 /* Default@2x.png in Resources */,
 				6A7B399A17B7815600F088A6 /* Default-568h@2x.png in Resources */,
-				6A7B39A017B7815600F088A6 /* ViewController.xib in Resources */,
+				6A7B39A017B7815600F088A6 /* TapPadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +180,8 @@
 			files = (
 				6A7B399017B7815600F088A6 /* main.m in Sources */,
 				6A7B399417B7815600F088A6 /* AppDelegate.m in Sources */,
-				6A7B399D17B7815600F088A6 /* ViewController.m in Sources */,
+				6A7B399D17B7815600F088A6 /* TapPadViewController.m in Sources */,
+				6A7B39A817B788E200F088A6 /* Grid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,12 +196,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		6A7B399E17B7815600F088A6 /* ViewController.xib */ = {
+		6A7B399E17B7815600F088A6 /* TapPadViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6A7B399F17B7815600F088A6 /* en */,
 			);
-			name = ViewController.xib;
+			name = TapPadViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

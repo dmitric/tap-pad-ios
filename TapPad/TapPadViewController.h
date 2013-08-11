@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface TapPadViewController : UIViewController
+
+@property (nonatomic, weak) IBOutlet UIButton *playControlButton;
 
 @end
