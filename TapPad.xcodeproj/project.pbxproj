@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		6A0B1C2217B9784E00E6406E /* TapPadViewController~iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2017B9784E00E6406E /* TapPadViewController~iPhone.xib */; };
 		6A0B1C2317B9784E00E6406E /* TapPadViewController~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2117B9784E00E6406E /* TapPadViewController~iPad.xib */; };
+		6A0B1C2517B97D2200E6406E /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2417B97D2200E6406E /* Default-Portrait~ipad.png */; };
+		6A0B1C2717B97D2600E6406E /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2617B97D2600E6406E /* Default-Portrait@2x~ipad.png */; };
+		6A0B1C2917B97F4700E6406E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2817B97F4700E6406E /* Default-568h@2x.png */; };
+		6A0B1C2B17B97F4A00E6406E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2A17B97F4A00E6406E /* Default.png */; };
+		6A0B1C2D17B97F4D00E6406E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2C17B97F4D00E6406E /* Default@2x.png */; };
 		6A7B398417B7815600F088A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398317B7815600F088A6 /* UIKit.framework */; };
 		6A7B398617B7815600F088A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398517B7815600F088A6 /* Foundation.framework */; };
 		6A7B398817B7815600F088A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398717B7815600F088A6 /* CoreGraphics.framework */; };
@@ -35,6 +40,11 @@
 /* Begin PBXFileReference section */
 		6A0B1C2017B9784E00E6406E /* TapPadViewController~iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "TapPadViewController~iPhone.xib"; path = "XIBs/TapPadViewController~iPhone.xib"; sourceTree = "<group>"; };
 		6A0B1C2117B9784E00E6406E /* TapPadViewController~iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "TapPadViewController~iPad.xib"; path = "XIBs/TapPadViewController~iPad.xib"; sourceTree = "<group>"; };
+		6A0B1C2417B97D2200E6406E /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		6A0B1C2617B97D2600E6406E /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		6A0B1C2817B97F4700E6406E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		6A0B1C2A17B97F4A00E6406E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		6A0B1C2C17B97F4D00E6406E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6A7B398017B7815600F088A6 /* TapPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7B398317B7815600F088A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6A7B398517B7815600F088A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,6 +99,19 @@
 			name = XIBs;
 			sourceTree = "<group>";
 		};
+		6A0B1C2E17B97F5F00E6406E /* Launch Images */ = {
+			isa = PBXGroup;
+			children = (
+				6A0B1C2C17B97F4D00E6406E /* Default@2x.png */,
+				6A0B1C2A17B97F4A00E6406E /* Default.png */,
+				6A0B1C2817B97F4700E6406E /* Default-568h@2x.png */,
+				6A0B1C2617B97D2600E6406E /* Default-Portrait@2x~ipad.png */,
+				6A0B1C2417B97D2200E6406E /* Default-Portrait~ipad.png */,
+			);
+			name = "Launch Images";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		6A7B397717B7815600F088A6 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +143,7 @@
 		6A7B398917B7815600F088A6 /* TapPad */ = {
 			isa = PBXGroup;
 			children = (
+				6A0B1C2E17B97F5F00E6406E /* Launch Images */,
 				6A0B1C1F17B9782E00E6406E /* XIBs */,
 				6A7B39A917B78F3E00F088A6 /* Sounds */,
 				6A7B399217B7815600F088A6 /* AppDelegate.h */,
@@ -229,6 +253,11 @@
 				6A7B39BA17B78F3E00F088A6 /* 7.wav in Resources */,
 				6A0B1C2217B9784E00E6406E /* TapPadViewController~iPhone.xib in Resources */,
 				6A0B1C2317B9784E00E6406E /* TapPadViewController~iPad.xib in Resources */,
+				6A0B1C2517B97D2200E6406E /* Default-Portrait~ipad.png in Resources */,
+				6A0B1C2717B97D2600E6406E /* Default-Portrait@2x~ipad.png in Resources */,
+				6A0B1C2917B97F4700E6406E /* Default-568h@2x.png in Resources */,
+				6A0B1C2B17B97F4A00E6406E /* Default.png in Resources */,
+				6A0B1C2D17B97F4D00E6406E /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
