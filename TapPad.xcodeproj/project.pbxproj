@@ -14,6 +14,14 @@
 		6A0B1C2917B97F4700E6406E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2817B97F4700E6406E /* Default-568h@2x.png */; };
 		6A0B1C2B17B97F4A00E6406E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2A17B97F4A00E6406E /* Default.png */; };
 		6A0B1C2D17B97F4D00E6406E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2C17B97F4D00E6406E /* Default@2x.png */; };
+		6A0B1C3D17B9881E00E6406E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C3C17B9881E00E6406E /* Icon.png */; };
+		6A0B1C3F17B9882300E6406E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C3E17B9882300E6406E /* Icon@2x.png */; };
+		6A0B1C4117B9886F00E6406E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C4017B9886F00E6406E /* Icon-72.png */; };
+		6A0B1C4317B9887700E6406E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C4217B9887700E6406E /* Icon-72@2x.png */; };
+		6A0B1C4817B988DD00E6406E /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C4417B988DD00E6406E /* Icon-Small-50.png */; };
+		6A0B1C4917B988DD00E6406E /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C4517B988DD00E6406E /* Icon-Small-50@2x.png */; };
+		6A0B1C4A17B988DD00E6406E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C4617B988DD00E6406E /* Icon-Small.png */; };
+		6A0B1C4B17B988DD00E6406E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C4717B988DD00E6406E /* Icon-Small@2x.png */; };
 		6A7B398417B7815600F088A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398317B7815600F088A6 /* UIKit.framework */; };
 		6A7B398617B7815600F088A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398517B7815600F088A6 /* Foundation.framework */; };
 		6A7B398817B7815600F088A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398717B7815600F088A6 /* CoreGraphics.framework */; };
@@ -45,6 +53,14 @@
 		6A0B1C2817B97F4700E6406E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		6A0B1C2A17B97F4A00E6406E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6A0B1C2C17B97F4D00E6406E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		6A0B1C3C17B9881E00E6406E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		6A0B1C3E17B9882300E6406E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		6A0B1C4017B9886F00E6406E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
+		6A0B1C4217B9887700E6406E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
+		6A0B1C4417B988DD00E6406E /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = SOURCE_ROOT; };
+		6A0B1C4517B988DD00E6406E /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = SOURCE_ROOT; };
+		6A0B1C4617B988DD00E6406E /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = SOURCE_ROOT; };
+		6A0B1C4717B988DD00E6406E /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = SOURCE_ROOT; };
 		6A7B398017B7815600F088A6 /* TapPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7B398317B7815600F088A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6A7B398517B7815600F088A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,6 +128,21 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		6A0B1C2F17B987E900E6406E /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				6A0B1C4417B988DD00E6406E /* Icon-Small-50.png */,
+				6A0B1C4517B988DD00E6406E /* Icon-Small-50@2x.png */,
+				6A0B1C4617B988DD00E6406E /* Icon-Small.png */,
+				6A0B1C4717B988DD00E6406E /* Icon-Small@2x.png */,
+				6A0B1C4217B9887700E6406E /* Icon-72@2x.png */,
+				6A0B1C4017B9886F00E6406E /* Icon-72.png */,
+				6A0B1C3E17B9882300E6406E /* Icon@2x.png */,
+				6A0B1C3C17B9881E00E6406E /* Icon.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		6A7B397717B7815600F088A6 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +174,7 @@
 		6A7B398917B7815600F088A6 /* TapPad */ = {
 			isa = PBXGroup;
 			children = (
+				6A0B1C2F17B987E900E6406E /* Icons */,
 				6A0B1C2E17B97F5F00E6406E /* Launch Images */,
 				6A0B1C1F17B9782E00E6406E /* XIBs */,
 				6A7B39A917B78F3E00F088A6 /* Sounds */,
@@ -258,6 +290,14 @@
 				6A0B1C2917B97F4700E6406E /* Default-568h@2x.png in Resources */,
 				6A0B1C2B17B97F4A00E6406E /* Default.png in Resources */,
 				6A0B1C2D17B97F4D00E6406E /* Default@2x.png in Resources */,
+				6A0B1C3D17B9881E00E6406E /* Icon.png in Resources */,
+				6A0B1C3F17B9882300E6406E /* Icon@2x.png in Resources */,
+				6A0B1C4117B9886F00E6406E /* Icon-72.png in Resources */,
+				6A0B1C4317B9887700E6406E /* Icon-72@2x.png in Resources */,
+				6A0B1C4817B988DD00E6406E /* Icon-Small-50.png in Resources */,
+				6A0B1C4917B988DD00E6406E /* Icon-Small-50@2x.png in Resources */,
+				6A0B1C4A17B988DD00E6406E /* Icon-Small.png in Resources */,
+				6A0B1C4B17B988DD00E6406E /* Icon-Small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
