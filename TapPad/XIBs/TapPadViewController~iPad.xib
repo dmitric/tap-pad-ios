@@ -86,7 +86,7 @@
 							<object class="IBUILabel" id="540268958">
 								<reference key="NSNextResponder" ref="10789950"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{30, 67}, {228, 21}}</string>
+								<string key="NSFrame">{{30, 67}, {444, 21}}</string>
 								<reference key="NSSuperview" ref="10789950"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -117,7 +117,7 @@
 						<string key="NSFrame">{{0, 896}, {768, 108}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="540268958"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -351,17 +351,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">TapPadViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">toggleTime:</string>
-						<string key="NS.object.0">UIButton</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">toggleTime:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">toggleTime:</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="buttonEnclosure">UIView</string>
 						<string key="playControlButton">UIButton</string>

@@ -9,6 +9,8 @@
 #define gridDimension 8
 #define bgRatio (245./256.)
 #define bgColor [UIColor colorWithRed:bgRatio green:bgRatio blue:bgRatio alpha:1]
+#define iPhoneCellWidth 39.
+#define iPadCellWidth 88.
 
 #import "TapPadViewController.h"
 #import "Grid.h"
@@ -32,12 +34,25 @@
 @property (nonatomic, strong) Grid *grid;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSMutableArray *buttonsGrid;
+@property (nonatomic, assign) BOOL isPlaying;
 
 @end
 
 @implementation TapPadViewController
 
 static NSInteger seed = 0;
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+        self = [super initWithNibName:[NSString stringWithFormat:@"%@~iPad", nibNameOrNil]
+                               bundle:nibBundleOrNil];
+    } else {
+        self = [super initWithNibName:[NSString stringWithFormat:@"%@~iPhone", nibNameOrNil] bundle:nibBundleOrNil];
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -53,7 +68,19 @@ static NSInteger seed = 0;
     for (int j = 0; j < gridDimension; j++) {
         NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:gridDimension];
         for (int i = 0; i < gridDimension; i++){
-            CGRect r = CGRectMake(28+(1+88)*i, 124+(1+88)*j, 88, 88);
+            
+            CGRect r;
+            
+            if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+                r = CGRectMake(28.+(1.+iPadCellWidth)*i, 124.+(1.+iPadCellWidth)*j,
+                               iPadCellWidth, iPadCellWidth);
+            }else{
+                r = CGRectMake(0.5+(1.+iPhoneCellWidth)*i,
+                               101.+(1.+iPhoneCellWidth)*j,
+                               iPhoneCellWidth,
+                               iPhoneCellWidth);
+            }
+            
             UIView *backingView = [[UIView alloc] initWithFrame:r];
             [backingView setBackgroundColor:bgColor];
             backingView.layer.borderWidth = 1.0;
@@ -67,6 +94,8 @@ static NSInteger seed = 0;
             button.layer.borderWidth = 1.0;
             button.layer.borderColor = [UIColor clearColor].CGColor;
             arr[i] = backingView;
+            
+            //a hack to encode 2d positon -- +1 on the 2nd digit to deal with 0 case
             button.tag = (j+1)*10 + i;
             
             [button addTarget:self action:@selector(shrinkBacking:) forControlEvents:UIControlEventTouchDown];
@@ -74,15 +103,16 @@ static NSInteger seed = 0;
             [button addTarget:self action:@selector(resize:) forControlEvents:UIControlEventTouchDragExit];
             [button addTarget:self action:@selector(shrinkBacking:) forControlEvents:UIControlEventTouchDragEnter];
             [button addTarget:self action:@selector(resize:) forControlEvents:UIControlEventTouchDragExit];
+            [button addTarget:self action:@selector(resize:) forControlEvents:UIControlEventTouchCancel];
+            
             [self.view addSubview:backingView];
             [self.view addSubview:button];
         }
         [self.buttonsGrid addObject:arr];
     }
-    
-    [self.playControlButton setTitle:@"PLAY" forState:UIControlStateHighlighted];
-    [self.playControlButton setTitle:@"PAUSE" forState:UIControlStateSelected];
     self.playControlButton.hidden = YES;
+    [self setPlayButtonTitle:@"PAUSE"];
+    
     self.atoms = [[NSMutableArray alloc] initWithCapacity:5];
     self.timer = [[NSTimer alloc] init];
     [self loadSounds];
@@ -107,14 +137,20 @@ static NSInteger seed = 0;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound7);
 }
 
+-(void)setPlayButtonTitle:(NSString *)s {
+    [self.playControlButton setTitle:s forState:UIControlStateNormal];
+    [self.playControlButton setTitle:s forState:UIControlStateHighlighted];
+}
+
 -(void)shrinkBacking:(UIButton *)b {
     int y = b.tag/10 - 1;
     int x = b.tag % 10;
     UIView *v = self.buttonsGrid[y][x];
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.1];
-        v.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.73, 0.73);
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.1 delay:0.
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         v.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.75, 0.75);
+                     } completion:nil];
     
 }
 
@@ -145,8 +181,8 @@ static NSInteger seed = 0;
     int x = b.tag % 10;
     [self resize:b];
     [self addAtomWithX:x andY:y];
-    if(self.playControlButton.hidden) {
-        [self toggleTime:self.playControlButton];
+    if (self.playControlButton.hidden) {
+        [self play];
         self.playControlButton.hidden = NO;
     }
     
@@ -161,10 +197,12 @@ static NSInteger seed = 0;
 }
 
 -(void)resizeBackingView:(UIView *)v {
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.1];
-    v.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
-    [UIView commitAnimations];
+    
+    [UIView animateWithDuration:0.1 delay:0.
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         v.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+                     } completion:nil];
 }
 
 -(void)moveAtom:(Atom *)atom {
@@ -259,9 +297,11 @@ static NSInteger seed = 0;
                             blue:59./256.
                            alpha:1.0];
     }
-    [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
-        [b setBackgroundColor:c];
-    } completion:^(BOOL finished) { }];
+    [UIView animateWithDuration:0.1 delay:0.
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+        b.backgroundColor = c;
+    } completion:nil];
     
 }
 
@@ -296,19 +336,26 @@ static NSInteger seed = 0;
 }
 
 -(IBAction)toggleTime:(UIButton*)sender{
-    if (sender.selected) { //Paused
-        sender.selected = NO;
-        [self.playControlButton setTitle:@"PLAY" forState:UIControlStateHighlighted];
-        [self.timer invalidate];
-        self.timer = nil;
-        
-        
-    } else { // stop current time
-        sender.selected = YES;
-        [self.playControlButton setTitle:@"PAUSE" forState:UIControlStateHighlighted];
-        self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self
-                                                    selector: @selector(runLoop:) userInfo: nil repeats: YES];
+    self.isPlaying = !self.isPlaying;
+    
+    if (self.isPlaying) {
+        [self pause];
+    } else {
+        [self play];
     }
+    
+}
+
+-(void)play {
+    [self setPlayButtonTitle:@"PAUSE"];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self
+                                                selector: @selector(runLoop:) userInfo: nil repeats: YES];
+}
+
+-(void) pause {
+    [self setPlayButtonTitle:@"PLAY"];
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 -(void)purgeOldAtoms {
