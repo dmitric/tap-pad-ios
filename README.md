@@ -1,7 +1,7 @@
 tap-pad-ios
 ===========
 
-Music Hackday Toronto 2013 - iOS based tap pad
+Music Hackday Toronto 2013 - iOS based tap pad (see web version [here](http://github.com/dmitric/tap-pad-web))
 
 Made by Dmitri Cherniak ([@dmitric](http://twitter.com/dmitric))
 
