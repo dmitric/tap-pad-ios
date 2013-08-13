@@ -50,6 +50,7 @@
 		6A7B39BE17B7908100F088A6 /* Atom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B39BD17B7908100F088A6 /* Atom.m */; };
 		6A7B39C517B7B2E600F088A6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B39C417B7B2E600F088A6 /* AudioToolbox.framework */; };
 		6AF5051C17BA2813001F3F6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5051E17BA2813001F3F6D /* Localizable.strings */; };
+		6AF5052517BA9CBA001F3F6D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5052417BA9CBA001F3F6D /* README.md */; };
 		7C51C2734AD34621A82E416E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C02E5CADCF4EDAA94396FA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +119,7 @@
 		6AF5052117BA94D2001F3F6D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6AF5052217BA9A96001F3F6D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6AF5052317BA9A96001F3F6D /* ja */ = {isa = PBXFileReference; lastKnownFileType = file; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6AF5052417BA9CBA001F3F6D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 		6A7B398917B7815600F088A6 /* TapPad */ = {
 			isa = PBXGroup;
 			children = (
+				6AF5052417BA9CBA001F3F6D /* README.md */,
 				6A1FAAE317B9FB6E004A090B /* Vendor */,
 				6A1FAADC17B9F0B9004A090B /* Fonts */,
 				6A0B1C2F17B987E900E6406E /* Icons */,
@@ -374,6 +377,7 @@
 				6A1FAADF17B9F0C8004A090B /* Raleway-Bold.ttf in Resources */,
 				6A1FAAE217B9F328004A090B /* Raleway-ExtraBold.ttf in Resources */,
 				6AF5051C17BA2813001F3F6D /* Localizable.strings in Resources */,
+				6AF5052517BA9CBA001F3F6D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
