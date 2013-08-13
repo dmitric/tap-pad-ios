@@ -86,7 +86,7 @@
 		6A1FAB0017BA0179004A090B /* ADNNetbotActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADNNetbotActivity.m; path = Vendor/ADNActivities/ADNNetbotActivity.m; sourceTree = "<group>"; };
 		6A1FAB0117BA0179004A090B /* ADNRiposteActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADNRiposteActivity.h; path = Vendor/ADNActivities/ADNRiposteActivity.h; sourceTree = "<group>"; };
 		6A1FAB0217BA0179004A090B /* ADNRiposteActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADNRiposteActivity.m; path = Vendor/ADNActivities/ADNRiposteActivity.m; sourceTree = "<group>"; };
-		6A7B398017B7815600F088A6 /* TapPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A7B398017B7815600F088A6 /* Tap Pad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tap Pad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7B398317B7815600F088A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6A7B398517B7815600F088A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6A7B398717B7815600F088A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -111,13 +111,15 @@
 		6A7B39BC17B7908100F088A6 /* Atom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atom.h; sourceTree = "<group>"; };
 		6A7B39BD17B7908100F088A6 /* Atom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Atom.m; sourceTree = "<group>"; };
 		6A7B39C417B7B2E600F088A6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6A80F55B17BAE88600B89991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6A80F55C17BAE88600B89991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6AF5051B17BA2806001F3F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6AF5051D17BA2813001F3F6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6AF5051F17BA2818001F3F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6AF5051D17BA2813001F3F6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6AF5051F17BA2818001F3F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6AF5052017BA94D2001F3F6D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		6AF5052117BA94D2001F3F6D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		6AF5052117BA94D2001F3F6D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6AF5052217BA9A96001F3F6D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6AF5052317BA9A96001F3F6D /* ja */ = {isa = PBXFileReference; lastKnownFileType = file; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6AF5052317BA9A96001F3F6D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6AF5052417BA9CBA001F3F6D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -225,7 +227,7 @@
 		6A7B398117B7815600F088A6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A7B398017B7815600F088A6 /* TapPad.app */,
+				6A7B398017B7815600F088A6 /* Tap Pad.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -312,7 +314,7 @@
 			);
 			name = "Tap Pad";
 			productName = TapPad;
-			productReference = 6A7B398017B7815600F088A6 /* TapPad.app */;
+			productReference = 6A7B398017B7815600F088A6 /* Tap Pad.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -333,6 +335,7 @@
 				fr,
 				"zh-Hans",
 				ja,
+				he,
 			);
 			mainGroup = 6A7B397717B7815600F088A6;
 			productRefGroup = 6A7B398117B7815600F088A6 /* Products */;
@@ -441,6 +444,7 @@
 				6AF5051B17BA2806001F3F6D /* fr */,
 				6AF5052017BA94D2001F3F6D /* zh-Hans */,
 				6AF5052217BA9A96001F3F6D /* ja */,
+				6A80F55B17BAE88600B89991 /* he */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -452,6 +456,7 @@
 				6AF5051F17BA2818001F3F6D /* fr */,
 				6AF5052117BA94D2001F3F6D /* zh-Hans */,
 				6AF5052317BA9A96001F3F6D /* ja */,
+				6A80F55C17BAE88600B89991 /* he */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

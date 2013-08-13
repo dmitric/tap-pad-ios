@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  TapPad
+
+  Created by Dmitri Cherniak on 8/13/13.
+  Copyright (c) 2013 Dmitri Cherniak. All rights reserved.
+*/
+
+"TAP PAD" = "TAP PAD";
+"SHARE" = "לשתף";
+"PAUSE" = "הפסקה";
+"PLAY" = "לנגן";
+"Shout out to Laplace's Demon" = "להראות כבוד לשד של לפלס";
+"Are we just automatons that make beautiful music? Listen to this." = "האם אנחנו רק רובוטים שהופכים את המוזיקה יפה? תקשיב לזה.";
+"LOADING GRID" = "טעינת רשת";
+"LOADED GRID :)" = "רשת טעונה";
+"GENERATING LINK" = "יצירת קישור";
+"LINK FAILED :(" = "הטעינה נכשלה";
