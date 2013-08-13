@@ -37,6 +37,14 @@ Screenshot on iPad
 -------------------
 ![iPad screenshot] (http://i.imgur.com/cGZBUv7.png)
 
+Internationalization
+----------------------
+
+Tap Pad for iOS currently has localizations for English, French and Chinese (Simplified)
+
+Thank you to the following people for their help with translation:
+* Chen Bi (Chinese translation)
+
 Web version
 --------------
 
