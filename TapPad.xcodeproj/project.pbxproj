@@ -50,7 +50,6 @@
 		6A7B39BE17B7908100F088A6 /* Atom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B39BD17B7908100F088A6 /* Atom.m */; };
 		6A7B39C517B7B2E600F088A6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B39C417B7B2E600F088A6 /* AudioToolbox.framework */; };
 		6AF5051C17BA2813001F3F6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5051E17BA2813001F3F6D /* Localizable.strings */; };
-		6AF5052517BA9CBA001F3F6D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5052417BA9CBA001F3F6D /* README.md */; };
 		7C51C2734AD34621A82E416E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C02E5CADCF4EDAA94396FA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -377,7 +376,6 @@
 				6A1FAADF17B9F0C8004A090B /* Raleway-Bold.ttf in Resources */,
 				6A1FAAE217B9F328004A090B /* Raleway-ExtraBold.ttf in Resources */,
 				6AF5051C17BA2813001F3F6D /* Localizable.strings in Resources */,
-				6AF5052517BA9CBA001F3F6D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
