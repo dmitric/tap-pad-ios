@@ -7,12 +7,12 @@
 */
 
 "TAP PAD" = "TAP PAD";
-"SHARE" = "PARTAGE";
+"SHARE" = "PARTAGER";
 "PAUSE" = "PAUSE";
-"PLAY" = "PLAY";
+"PLAY" = "JOUER";
 "Shout out to Laplace's Demon" = "Criez au démon de Laplace";
-"Are we just automatons that make beautiful music? Listen to this." = "Sommes-nous juste automates qui font belle musique? Écoutez ça.";
-"LOADING GRID" = "LOADING GRID";
-"LOADED GRID :)" = "LOADED GRID :)";
-"GENERATING LINK" = "CRÉE LIEN";
-"LINK FAILED :(" = "LIEN RATÉ :(";
+"Are we just automatons that make beautiful music? Listen to this." = "Nous ne somme pass de simples machines qui font de la belle musique. Écoute ça.";
+"LOADING GRID" = "CHARGEMENT DE LA GRILLE";
+"LOADED GRID :)" = "GRILLE CHARGÉE";
+"GENERATING LINK" = "CRÉATION DU LIEN EN COURS";
+"LINK FAILED :(" = "CRÉATION ÉCHOUÉE";
