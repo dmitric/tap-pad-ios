@@ -7,6 +7,17 @@ Note: This is a universal app and works for iPhone and iPad
 
 Made by Dmitri Cherniak ([@dmitric](http://twitter.com/dmitric))
 
+How to get it running
+------------------------
+
+```
+git clone git@github.com:dmitric/tap-pad-ios.git
+pod install
+open TapPad.xcworkspace
+```
+
+The only external dependency is AFNetworking and I use CocoaPods to load it in. You need CocoaPods to built this project.
+
 About
 -----------
 
