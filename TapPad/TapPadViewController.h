@@ -12,4 +12,8 @@
 
 -(void)loadSound:(NSString *)soundCode;
 
+-(void)pause;
+
+-(void)play;
+
 @end

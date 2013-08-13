@@ -40,4 +40,9 @@
     return YES;
 }
 
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    [self.viewController pause];
+}
+
 @end
