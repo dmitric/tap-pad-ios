@@ -192,11 +192,13 @@ static NSInteger seed = 0;
              || y > gridDimension-1 || y < 0);
 }
 
--(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y {
-    [self addAtomWithX:x andY:y andDirection:1 andVertical:YES];
+-(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y andRender:(BOOL)render{
+    [self addAtomWithX:x andY:y andDirection:1 andVertical:YES andRender:render];
 }
 
--(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y andDirection:(NSInteger)d andVertical:(BOOL)vertical{
+-(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y andDirection:(NSInteger)d
+         andVertical:(BOOL)vertical andRender:(BOOL)render {
+    
     if (![self isValidMove:x and:y]){
         NSLog(@"Can't add, outside of bounds");
     }else{
@@ -209,7 +211,9 @@ static NSInteger seed = 0;
         [self.atoms addObject:a];
         [self.grid addObject:a withId:[a stringId]
                        toRow:a.y andColumn:a.x];
-        [self renderAtX:x andY:y];
+        if (render) {
+            [self renderAtX:x andY:y];
+        }
     }
 }
 
@@ -217,7 +221,7 @@ static NSInteger seed = 0;
     int y = b.tag/10 - 1;
     int x = b.tag % 10;
     [self resize:b];
-    [self addAtomWithX:x andY:y];
+    [self addAtomWithX:x andY:y andRender:YES];
     if (self.playControlButton.hidden) {
         [self play];
         self.playControlButton.hidden = NO;
@@ -434,13 +438,12 @@ static NSInteger seed = 0;
     [self clearAtoms];
     [atomList enumerateObjectsUsingBlock:^(NSDictionary *atomDict, NSUInteger idx, BOOL *stop) {
         @try {
-            Atom *atom = [[Atom alloc] init];
-            atom.x = [atomDict[@"x"] integerValue];
-            atom.y = [atomDict[@"y"] integerValue];
-            atom.direction = [atomDict[@"direction"] integerValue] == 1 ? 1 : -1;
-            atom.vertical = [atomDict[@"vertical"] boolValue];
-            [self.atoms addObject:atom];
-            [self.grid addObject:atom withId:[atom stringId] toRow:atom.y andColumn:atom.x];
+            [self addAtomWithX:[atomDict[@"x"] integerValue]
+                          andY:[atomDict[@"y"] integerValue]
+                  andDirection:[atomDict[@"direction"] integerValue] == 1 ? 1 : -1
+                   andVertical:[atomDict[@"vertical"] boolValue]
+                     andRender:NO];
+
         }
         @catch (NSException *exception) {
             NSLog(@"Failed to load atom");
