@@ -16,7 +16,7 @@ pod install
 open TapPad.xcworkspace
 ```
 
-The only external dependency is AFNetworking and I use CocoaPods to load it in. You need CocoaPods to built this project.
+The only external dependency is AFNetworking and I use CocoaPods to load it in. You need CocoaPods to build this project.
 
 About
 -----------
