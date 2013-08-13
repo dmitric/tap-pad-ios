@@ -136,7 +136,7 @@ static NSInteger seed = 0;
             button.layer.borderColor = [UIColor clearColor].CGColor;
             arr[i] = backingView;
             
-            //a hack to encode 2d positon -- +1 on the 2nd digit to deal with 0 case
+            //a hack to encode 2d positon in one number -- +1 on the 2nd digit to deal with 0 case
             button.tag = (j+1)*10 + i;
             
             [button addTarget:self action:@selector(shrinkBacking:) forControlEvents:UIControlEventTouchDown];
@@ -176,8 +176,8 @@ static NSInteger seed = 0;
 }
 
 -(void) setPlayButtonTitle:(NSString *)s {
-    [self.playControlButton setTitle:s forState:UIControlStateNormal];
-    [self.playControlButton setTitle:s forState:UIControlStateHighlighted];
+    [self.playControlButton setTitle:NSLocalizedString(s, nil) forState:UIControlStateNormal];
+    [self.playControlButton setTitle:NSLocalizedString(s, nil) forState:UIControlStateHighlighted];
 }
 
 -(void) shrinkBacking:(UIButton *)b {
@@ -377,14 +377,14 @@ static NSInteger seed = 0;
 }
 
 -(void) play {
-    [self setPlayButtonTitle: NSLocalizedString(@"PAUSE", nil)];
+    [self setPlayButtonTitle:@"PAUSE"];
     self.isPlaying = YES;
     self.timer = [NSTimer scheduledTimerWithTimeInterval: self.period target: self
                                                 selector: @selector(runLoop:) userInfo: nil repeats: YES];
 }
 
 -(void) pause {
-    [self setPlayButtonTitle: NSLocalizedString(@"PLAY", nil)];
+    [self setPlayButtonTitle:@"PLAY"];
     self.isPlaying = NO;
     [self.timer invalidate];
     self.timer = nil;
