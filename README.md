@@ -30,9 +30,12 @@ Generate interesting musical patterns using basic rules of cellular automatons.
 You'd be surprised how beautiful some of these "random" yet 100% reproducible patterns are. Its sounds totally unique, but it's completely deterministic.
 
 Screenshot on iPhone
---------------
-
+----------------------
 ![iPhone screenshot] (http://i.imgur.com/YnQtXsF.png)
+
+Screenshot on iPad
+-------------------
+![iPad screenshot] (http://i.imgur.com/cGZBUv7.png)
 
 Web version
 --------------
