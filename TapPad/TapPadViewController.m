@@ -26,6 +26,7 @@
 #define successfulLoadGridText @"LOADED GRID :)"
 #define generatingLinkText @"GENERATING LINK"
 #define errorGeneratingLinkText @"LINK FAILED :("
+#define shoutoutText @"Shout out to Laplace's Demon"
 #define shareMessage @"Are we just automatons that make beautiful music? Listen to this."
 
 #import "TapPadViewController.h"
@@ -101,8 +102,12 @@ static NSInteger seed = 0;
     [super viewDidLoad];
     [self setupFonts];
     
+    [self.shareButton setTitle:NSLocalizedString(@"SHARE", nil) forState:UIControlStateNormal];
+    
     self.accessoryLabel.alpha = 0;
-    self.accessoryLabel.text = generatingLinkText;
+    self.accessoryLabel.text = NSLocalizedString(generatingLinkText, nil);
+    
+    self.shoutoutLabel.text = NSLocalizedString(shoutoutText, nil);
     
     for (int j = 0; j < gridDimension; j++) {
         NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:gridDimension];
@@ -234,7 +239,6 @@ static NSInteger seed = 0;
     int x = b.tag % 10;
     UIView *v = self.buttonsGrid[y][x];
     [self resizeBackingView:v];
-    
 }
 
 -(void) resizeBackingView:(UIView *)v {
@@ -373,14 +377,14 @@ static NSInteger seed = 0;
 }
 
 -(void) play {
-    [self setPlayButtonTitle:@"PAUSE"];
+    [self setPlayButtonTitle: NSLocalizedString(@"PAUSE", nil)];
     self.isPlaying = YES;
     self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self
                                                 selector: @selector(runLoop:) userInfo: nil repeats: YES];
 }
 
 -(void) pause {
-    [self setPlayButtonTitle:@"PLAY"];
+    [self setPlayButtonTitle: NSLocalizedString(@"PLAY", nil)];
     self.isPlaying = NO;
     [self.timer invalidate];
     self.timer = nil;
@@ -407,7 +411,7 @@ static NSInteger seed = 0;
     self.shareButton.enabled = NO;
     [self pause];
     self.accessoryLabel.alpha = 0;
-    self.accessoryLabel.text = loadingGridText;
+    self.accessoryLabel.text = NSLocalizedString(loadingGridText, nil);
     
     [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.accessoryLabel.alpha = 1.0;
@@ -453,7 +457,7 @@ static NSInteger seed = 0;
     
     [self render];
     
-    self.accessoryLabel.text = successfulLoadGridText;
+    self.accessoryLabel.text = NSLocalizedString(successfulLoadGridText, nil);
     [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.accessoryLabel.alpha = 1.0;
     } completion:^(BOOL finished) {
@@ -462,7 +466,7 @@ static NSInteger seed = 0;
         [UIView animateWithDuration:0.1 delay:1.6 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.accessoryLabel.alpha = 0;
         } completion:^(BOOL finished){
-            self.accessoryLabel.text = generatingLinkText;
+            self.accessoryLabel.text = NSLocalizedString(generatingLinkText, nil);
             self.shareButton.enabled = YES;
         }];
     }];
@@ -488,7 +492,7 @@ static NSInteger seed = 0;
 
 -(IBAction) shareBoardState:(UIButton *)button {
     self.shareButton.enabled = NO;
-    self.accessoryLabel.text = generatingLinkText;
+    self.accessoryLabel.text = NSLocalizedString(generatingLinkText, nil);
     
     __block BOOL state = self.isPlaying;
     if (state){
@@ -528,11 +532,11 @@ static NSInteger seed = 0;
 
 -(void)addLoadingPulseAnimation{
     CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    pulse.duration=0.5;
-    pulse.repeatCount=HUGE_VALF;
-    pulse.autoreverses=YES;
-    pulse.fromValue=[NSNumber numberWithFloat:1.0];
-    pulse.toValue=[NSNumber numberWithFloat:0.2];
+    pulse.duration = 0.5;
+    pulse.repeatCount = HUGE_VALF;
+    pulse.autoreverses = YES;
+    pulse.fromValue = [NSNumber numberWithFloat:1.0];
+    pulse.toValue = [NSNumber numberWithFloat:0.2];
     [self.accessoryLabel.layer addAnimation:pulse forKey:@"pulse"];
 }
 
@@ -557,7 +561,7 @@ static NSInteger seed = 0;
 -(void) shareLink:(NSString *)link andReturnToState:(BOOL)state {
     
     NSArray * activityItems = @[
-        [NSString stringWithFormat:shareMessage],
+        NSLocalizedString(shareMessage, nil),
         [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", hostName, link]]
     ];
     
@@ -586,14 +590,14 @@ static NSInteger seed = 0;
 }
 
 -(void) handleConnectionError:(NSError *)error {
-    self.accessoryLabel.text = errorGeneratingLinkText;
+    self.accessoryLabel.text = NSLocalizedString(errorGeneratingLinkText, nil);
     [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.accessoryLabel.alpha = 1.0;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.1 delay:1.6 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.accessoryLabel.alpha = 0;
         } completion:^(BOOL finished){
-            self.accessoryLabel.text = generatingLinkText;
+            self.accessoryLabel.text = NSLocalizedString(generatingLinkText, nil);
             self.shareButton.enabled = YES;
         }];
     }];
