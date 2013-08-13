@@ -437,7 +437,7 @@ static NSInteger seed = 0;
             Atom *atom = [[Atom alloc] init];
             atom.x = [atomDict[@"x"] integerValue];
             atom.y = [atomDict[@"y"] integerValue];
-            atom.direction = [atomDict[@"direction"] integerValue];
+            atom.direction = [atomDict[@"direction"] integerValue] == 1 ? 1 : -1;
             atom.vertical = [atomDict[@"vertical"] boolValue];
             [self.atoms addObject:atom];
             [self.grid addObject:atom withId:[atom stringId] toRow:atom.y andColumn:atom.x];
