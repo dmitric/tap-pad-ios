@@ -538,13 +538,12 @@ static NSInteger seed = 0;
         self.shareButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:18];
         self.titleLabel.font = [UIFont fontWithName:@"Raleway-ExtraBold" size:30];
         self.playControlButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:25];
-        self.accessoryLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:15];
     }else{
         self.titleLabel.font = [UIFont fontWithName:@"Raleway-ExtraBold" size:25];
         self.shareButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:15];
         self.playControlButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:20];
-        self.accessoryLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:12];
     }
+    self.accessoryLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:15];
 }
 
 -(void) removeLoadingPulseAnimation {
