@@ -16,14 +16,15 @@
 #define singleAutomatonColor [UIColor colorWithRed:194/256. green:221./256. blue:255./256. alpha:0.97]
 #define multipleAutomatonColor [UIColor colorWithRed:249./256. green:83./256. blue:59./256. alpha:1.0]
 
+
 #define iPhoneCellWidth 39.
 #define iPadCellWidth 88.
 
 #define hostName @"http://tap-pad.herokuapp.com"
 
-#define loadingGridText @"LOADING GRID..."
+#define loadingGridText @"LOADING GRID"
 #define successfulLoadGridText @"LOADED GRID :)"
-#define generatingLinkText @"GENERATING LINK..."
+#define generatingLinkText @"GENERATING LINK"
 #define errorGeneratingLinkText @"LINK FAILED :("
 #define shareMessage @"Are we just automatons that make beautiful music? Listen to this."
 
@@ -55,6 +56,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *shareButton;
 @property (nonatomic, weak) IBOutlet UIView *buttonEnclosure;
 @property (nonatomic, weak) IBOutlet UILabel *accessoryLabel;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *shoutoutLabel;
 @property (nonatomic, assign) CGFloat rate;
 @property (nonatomic, assign) NSInteger collisionsLimit;
 @property (nonatomic, assign) NSInteger movesLimit;
@@ -95,6 +98,7 @@ static NSInteger seed = 0;
 {
     
     [super viewDidLoad];
+    [self setupFonts];
     
     self.accessoryLabel.alpha = 0;
     self.accessoryLabel.text = generatingLinkText;
@@ -526,6 +530,21 @@ static NSInteger seed = 0;
     pulse.fromValue=[NSNumber numberWithFloat:1.0];
     pulse.toValue=[NSNumber numberWithFloat:0.2];
     [self.accessoryLabel.layer addAnimation:pulse forKey:@"pulse"];
+}
+
+-(void)setupFonts {
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+        self.shareButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:18];
+        self.titleLabel.font = [UIFont fontWithName:@"Raleway-ExtraBold" size:30];
+        self.playControlButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:25];
+        self.accessoryLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:15];
+    }else{
+        self.titleLabel.font = [UIFont fontWithName:@"Raleway-ExtraBold" size:25];
+        self.shareButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:15];
+        self.playControlButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:20];
+        self.accessoryLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:12];
+    }
 }
 
 -(void) removeLoadingPulseAnimation {
