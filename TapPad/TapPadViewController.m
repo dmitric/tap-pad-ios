@@ -60,7 +60,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *accessoryLabel;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *shoutoutLabel;
-@property (nonatomic, assign) CGFloat rate;
+@property (nonatomic, assign) CGFloat period;
 @property (nonatomic, assign) NSInteger collisionsLimit;
 @property (nonatomic, assign) NSInteger movesLimit;
 
@@ -89,7 +89,7 @@ static NSInteger seed = 0;
         
         self.grid = [[Grid alloc] initWithDimension:gridDimension];
         self.buttonsGrid = [[NSMutableArray alloc] initWithCapacity:gridDimension];
-        
+        self.period = 0.1;
         self.collisionsLimit = 100;
         self.movesLimit = 300;
     }
@@ -379,7 +379,7 @@ static NSInteger seed = 0;
 -(void) play {
     [self setPlayButtonTitle: NSLocalizedString(@"PAUSE", nil)];
     self.isPlaying = YES;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self
+    self.timer = [NSTimer scheduledTimerWithTimeInterval: self.period target: self
                                                 selector: @selector(runLoop:) userInfo: nil repeats: YES];
 }
 
