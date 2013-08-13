@@ -25,8 +25,18 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    NSString *soundCode = url.host;
-    [self.viewController loadSound:soundCode];
+    if(url.host){
+        [self.viewController loadSound:url.host];
+    }
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+    sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if (url.host) {
+        [self.viewController loadSound:url.host];
+    }
     return YES;
 }
 

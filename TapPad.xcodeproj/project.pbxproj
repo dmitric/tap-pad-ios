@@ -25,6 +25,12 @@
 		6A1FAADB17B9F089004A090B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A1FAAD317B9F089004A090B /* Icon@2x.png */; };
 		6A1FAADF17B9F0C8004A090B /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A1FAADD17B9F0C8004A090B /* Raleway-Bold.ttf */; };
 		6A1FAAE217B9F328004A090B /* Raleway-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A1FAAE117B9F328004A090B /* Raleway-ExtraBold.ttf */; };
+		6A1FAAF117B9FB9A004A090B /* ADNActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1FAAE617B9FB99004A090B /* ADNActivity.m */; };
+		6A1FAAF217B9FB9A004A090B /* ADNActivityCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1FAAE817B9FB99004A090B /* ADNActivityCollection.m */; };
+		6A1FAAF317B9FB9A004A090B /* ADNFelixActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1FAAEA17B9FB9A004A090B /* ADNFelixActivity.m */; };
+		6A1FAAF417B9FB9A004A090B /* ADNHappyActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1FAAEC17B9FB9A004A090B /* ADNHappyActivity.m */; };
+		6A1FAAF517B9FB9A004A090B /* ADNNetbotActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1FAAEE17B9FB9A004A090B /* ADNNetbotActivity.m */; };
+		6A1FAAF617B9FB9A004A090B /* ADNRiposteActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1FAAF017B9FB9A004A090B /* ADNRiposteActivity.m */; };
 		6A7B398417B7815600F088A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398317B7815600F088A6 /* UIKit.framework */; };
 		6A7B398617B7815600F088A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398517B7815600F088A6 /* Foundation.framework */; };
 		6A7B398817B7815600F088A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B398717B7815600F088A6 /* CoreGraphics.framework */; };
@@ -67,6 +73,18 @@
 		6A1FAAD317B9F089004A090B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Icons/Icon@2x.png"; sourceTree = "<group>"; };
 		6A1FAADD17B9F0C8004A090B /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-Bold.ttf"; path = "Fonts/Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		6A1FAAE117B9F328004A090B /* Raleway-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-ExtraBold.ttf"; path = "Fonts/Raleway-ExtraBold.ttf"; sourceTree = "<group>"; };
+		6A1FAAE517B9FB99004A090B /* ADNActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNActivity.h; sourceTree = "<group>"; };
+		6A1FAAE617B9FB99004A090B /* ADNActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNActivity.m; sourceTree = "<group>"; };
+		6A1FAAE717B9FB99004A090B /* ADNActivityCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNActivityCollection.h; sourceTree = "<group>"; };
+		6A1FAAE817B9FB99004A090B /* ADNActivityCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNActivityCollection.m; sourceTree = "<group>"; };
+		6A1FAAE917B9FB9A004A090B /* ADNFelixActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNFelixActivity.h; sourceTree = "<group>"; };
+		6A1FAAEA17B9FB9A004A090B /* ADNFelixActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNFelixActivity.m; sourceTree = "<group>"; };
+		6A1FAAEB17B9FB9A004A090B /* ADNHappyActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNHappyActivity.h; sourceTree = "<group>"; };
+		6A1FAAEC17B9FB9A004A090B /* ADNHappyActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNHappyActivity.m; sourceTree = "<group>"; };
+		6A1FAAED17B9FB9A004A090B /* ADNNetbotActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNNetbotActivity.h; sourceTree = "<group>"; };
+		6A1FAAEE17B9FB9A004A090B /* ADNNetbotActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNNetbotActivity.m; sourceTree = "<group>"; };
+		6A1FAAEF17B9FB9A004A090B /* ADNRiposteActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNRiposteActivity.h; sourceTree = "<group>"; };
+		6A1FAAF017B9FB9A004A090B /* ADNRiposteActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNRiposteActivity.m; sourceTree = "<group>"; };
 		6A7B398017B7815600F088A6 /* TapPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7B398317B7815600F088A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6A7B398517B7815600F088A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,7 +94,7 @@
 		6A7B398F17B7815600F088A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A7B399117B7815600F088A6 /* TapPad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TapPad-Prefix.pch"; sourceTree = "<group>"; };
 		6A7B399217B7815600F088A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6A7B399317B7815600F088A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6A7B399317B7815600F088A6 /* AppDelegate.m */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; };
 		6A7B399517B7815600F088A6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6A7B399717B7815600F088A6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6A7B399917B7815600F088A6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -160,6 +178,33 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		6A1FAAE317B9FB6E004A090B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				6A1FAAE417B9FB75004A090B /* Activities */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		6A1FAAE417B9FB75004A090B /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				6A1FAAE517B9FB99004A090B /* ADNActivity.h */,
+				6A1FAAE617B9FB99004A090B /* ADNActivity.m */,
+				6A1FAAE717B9FB99004A090B /* ADNActivityCollection.h */,
+				6A1FAAE817B9FB99004A090B /* ADNActivityCollection.m */,
+				6A1FAAE917B9FB9A004A090B /* ADNFelixActivity.h */,
+				6A1FAAEA17B9FB9A004A090B /* ADNFelixActivity.m */,
+				6A1FAAEB17B9FB9A004A090B /* ADNHappyActivity.h */,
+				6A1FAAEC17B9FB9A004A090B /* ADNHappyActivity.m */,
+				6A1FAAED17B9FB9A004A090B /* ADNNetbotActivity.h */,
+				6A1FAAEE17B9FB9A004A090B /* ADNNetbotActivity.m */,
+				6A1FAAEF17B9FB9A004A090B /* ADNRiposteActivity.h */,
+				6A1FAAF017B9FB9A004A090B /* ADNRiposteActivity.m */,
+			);
+			name = Activities;
+			sourceTree = "<group>";
+		};
 		6A7B397717B7815600F088A6 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +239,7 @@
 		6A7B398917B7815600F088A6 /* TapPad */ = {
 			isa = PBXGroup;
 			children = (
+				6A1FAAE317B9FB6E004A090B /* Vendor */,
 				6A1FAADC17B9F0B9004A090B /* Fonts */,
 				6A0B1C2F17B987E900E6406E /* Icons */,
 				6A0B1C2E17B97F5F00E6406E /* Launch Images */,
@@ -366,6 +412,12 @@
 				6A7B399D17B7815600F088A6 /* TapPadViewController.m in Sources */,
 				6A7B39A817B788E200F088A6 /* Grid.m in Sources */,
 				6A7B39BE17B7908100F088A6 /* Atom.m in Sources */,
+				6A1FAAF117B9FB9A004A090B /* ADNActivity.m in Sources */,
+				6A1FAAF217B9FB9A004A090B /* ADNActivityCollection.m in Sources */,
+				6A1FAAF317B9FB9A004A090B /* ADNFelixActivity.m in Sources */,
+				6A1FAAF417B9FB9A004A090B /* ADNHappyActivity.m in Sources */,
+				6A1FAAF517B9FB9A004A090B /* ADNNetbotActivity.m in Sources */,
+				6A1FAAF617B9FB9A004A090B /* ADNRiposteActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

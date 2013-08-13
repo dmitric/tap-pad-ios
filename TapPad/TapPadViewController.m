@@ -31,6 +31,7 @@
 #import "TapPadViewController.h"
 #import "Grid.h"
 #import "Atom.h"
+#import "ADNActivityCollection.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AFNetworking/AFNetworking.h>
 
@@ -557,7 +558,7 @@ static NSInteger seed = 0;
         [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", hostName, link]]
     ];
     
-    self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:[ADNActivityCollection allActivities]];
     
     self.activityViewController.excludedActivityTypes = @[
         UIActivityTypePostToWeibo, UIActivityTypePrint
