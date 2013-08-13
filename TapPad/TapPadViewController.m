@@ -7,13 +7,22 @@
 //
 
 #define gridDimension 8
-#define bgRatio (245./256.)
-#define bgColor [UIColor colorWithRed:bgRatio green:bgRatio blue:bgRatio alpha:1]
+
+#define bgGray (245./256.)
+#define borderGray (158./256.)
+
+#define bgColor [UIColor colorWithRed:bgGray green:bgGray blue:bgGray alpha:1.]
+#define cellBorderColor [UIColor colorWithRed:borderGray green:borderGray blue:borderGray alpha:1.]
 #define singleAutomatonColor [UIColor colorWithRed:194/256. green:221./256. blue:255./256. alpha:0.97]
 #define multipleAutomatonColor [UIColor colorWithRed:249./256. green:83./256. blue:59./256. alpha:1.0]
+
 #define iPhoneCellWidth 39.
 #define iPadCellWidth 88.
+
 #define hostName @"http://tap-pad.herokuapp.com"
+
+#define loadingGridText @"LOADING GRID..."
+#define successfulLoadGridText @"LOADED GRID :)"
 #define generatingLinkText @"GENERATING LINK..."
 #define errorGeneratingLinkText @"LINK FAILED :("
 #define shareMessage @"Are we just automatons that make beautiful music? Listen to this."
@@ -35,14 +44,20 @@
     SystemSoundID sound7;
 }
 
-
-
 @property (nonatomic, strong) NSMutableArray *atoms;
 @property (nonatomic, strong) Grid *grid;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSMutableArray *buttonsGrid;
+@property (nonatomic, strong) AFHTTPClient *httpClient;
 @property (nonatomic, assign) BOOL isPlaying;
 @property (nonatomic, strong) UIActivityViewController *activityViewController;
+@property (nonatomic, weak) IBOutlet UIButton *playControlButton;
+@property (nonatomic, weak) IBOutlet UIButton *shareButton;
+@property (nonatomic, weak) IBOutlet UIView *buttonEnclosure;
+@property (nonatomic, weak) IBOutlet UILabel *accessoryLabel;
+@property (nonatomic, assign) CGFloat rate;
+@property (nonatomic, assign) NSInteger collisionsLimit;
+@property (nonatomic, assign) NSInteger movesLimit;
 
 @end
 
@@ -59,6 +74,20 @@ static NSInteger seed = 0;
     } else {
         self = [super initWithNibName:[NSString stringWithFormat:@"%@~iPhone", nibNameOrNil] bundle:nibBundleOrNil];
     }
+    
+    if (self) {
+        self.httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:hostName]];
+        [self.httpClient setParameterEncoding:AFFormURLParameterEncoding];
+        [self.httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
+        
+        self.atoms = [[NSMutableArray alloc] initWithCapacity:gridDimension];
+        
+        self.grid = [[Grid alloc] initWithDimension:gridDimension];
+        self.buttonsGrid = [[NSMutableArray alloc] initWithCapacity:gridDimension];
+        
+        self.collisionsLimit = 100;
+        self.movesLimit = 300;
+    }
     return self;
 }
 
@@ -67,16 +96,8 @@ static NSInteger seed = 0;
     
     [super viewDidLoad];
     
-    self.linkGeneratingLabel.alpha = 0;
-    self.linkGeneratingLabel.text = generatingLinkText;
-    
-    self.collisionsLimit = 100;
-    self.movesLimit = 300;
-    
-	// Do any additional setup after loading the view, typically from a nib.
-    self.grid = [[Grid alloc] initWithDimension:gridDimension];
-    self.buttonsGrid = [[NSMutableArray alloc] initWithCapacity:gridDimension];
-    CGFloat borderRatio = 158./256.;
+    self.accessoryLabel.alpha = 0;
+    self.accessoryLabel.text = generatingLinkText;
     
     for (int j = 0; j < gridDimension; j++) {
         NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:gridDimension];
@@ -95,15 +116,12 @@ static NSInteger seed = 0;
             }
             
             UIView *backingView = [[UIView alloc] initWithFrame:r];
-            [backingView setBackgroundColor:bgColor];
+            backingView.backgroundColor = bgColor;
             backingView.layer.borderWidth = 1.0;
-            backingView.layer.borderColor = [UIColor colorWithRed:borderRatio
-                                                            green:borderRatio
-                                                             blue:borderRatio alpha:1].CGColor;
+            backingView.layer.borderColor = cellBorderColor.CGColor;
             
             UIButton *button = [[UIButton alloc] initWithFrame:r];
-            
-            [button setBackgroundColor:[UIColor clearColor]];
+            button.backgroundColor = [UIColor clearColor];
             button.layer.borderWidth = 1.0;
             button.layer.borderColor = [UIColor clearColor].CGColor;
             arr[i] = backingView;
@@ -125,9 +143,6 @@ static NSInteger seed = 0;
     }
     self.playControlButton.hidden = YES;
     [self setPlayButtonTitle:@"PAUSE"];
-    
-    self.atoms = [[NSMutableArray alloc] initWithCapacity:5];
-    self.timer = [[NSTimer alloc] init];
     [self loadSounds];
 }
 
@@ -173,18 +188,22 @@ static NSInteger seed = 0;
 }
 
 -(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y {
+    [self addAtomWithX:x andY:y andDirection:1 andVertical:YES];
+}
+
+-(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y andDirection:(NSInteger)d andVertical:(BOOL)vertical{
     if (![self isValidMove:x and:y]){
         NSLog(@"Can't add, outside of bounds");
     }else{
         Atom *a = [[Atom alloc] init];
         a.x = x;
         a.y = y;
-        a.direction = 1;
-        a.vertical = YES;
+        a.direction = d;
+        a.vertical = vertical;
         a.identifier = seed++;
         [self.atoms addObject:a];
-        [self.grid addObject:a withId:[@(a.identifier) description]
-                             toRow:a.y andColumn:a.x];
+        [self.grid addObject:a withId:[a stringId]
+                       toRow:a.y andColumn:a.x];
         [self renderAtX:x andY:y];
     }
 }
@@ -232,15 +251,15 @@ static NSInteger seed = 0;
             [self playAudio:curY];
         }
     }
-    NSString *atomId = [@(atom.identifier) description];
-    [self.grid removeObjectWithId:atomId
+    
+    [self.grid removeObjectWithId:[atom stringId]
                           fromRow:curY andColumn:curX];
     [atom move];
                 
     curX = atom.x;
     curY = atom.y;
     
-    [self.grid addObject:atom withId:atomId toRow:curY andColumn:curX];
+    [self.grid addObject:atom withId:[atom stringId] toRow:curY andColumn:curX];
 }
 
 -(void) manageHeadOnCollisions:(Atom *)atom {
@@ -336,12 +355,6 @@ static NSInteger seed = 0;
     
 }
 
-- (void) didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(IBAction) toggleTime:(UIButton*)sender{
     if (self.isPlaying) {
         [self pause];
@@ -370,7 +383,7 @@ static NSInteger seed = 0;
     for (Atom *atom in self.atoms){
         if (atom.collisions > self.collisionsLimit ||
             atom.moves > self.movesLimit) {
-            [self.grid removeObjectWithId:[@(atom.identifier) description]
+            [self.grid removeObjectWithId:[atom stringId]
                                   fromRow:atom.y andColumn:atom.x];
             
         }else{
@@ -381,7 +394,83 @@ static NSInteger seed = 0;
     
 }
 
--(NSArray *) serialize {
+-(void)loadSound:(NSString *)soundCode {
+    self.shareButton.enabled = NO;
+    [self pause];
+    self.accessoryLabel.alpha = 0;
+    self.accessoryLabel.text = loadingGridText;
+    
+    [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.accessoryLabel.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        
+        [self addLoadingPulseAnimation];
+        
+        [self.httpClient postPath:[NSString stringWithFormat:@"grid/%@" ,soundCode] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSError *error = nil;
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject
+                                                                 options:0 error:&error];
+            [self removeLoadingPulseAnimation];
+            if (!error && json[@"atoms"]) {
+                [self loadAtoms:json[@"atoms"]];
+            }else{
+                [self handleConnectionError:error];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self removeLoadingPulseAnimation];
+            [self handleConnectionError:error];
+        }];
+    }];
+    
+}
+
+-(void)loadAtoms:(NSArray *)atomList{
+    
+    [self clearAtoms];
+    [atomList enumerateObjectsUsingBlock:^(NSDictionary *atomDict, NSUInteger idx, BOOL *stop) {
+        @try {
+            Atom *atom = [[Atom alloc] init];
+            atom.x = [atomDict[@"x"] integerValue];
+            atom.y = [atomDict[@"y"] integerValue];
+            atom.direction = [atomDict[@"direction"] integerValue];
+            atom.vertical = [atomDict[@"vertical"] boolValue];
+            [self.atoms addObject:atom];
+            [self.grid addObject:atom withId:[atom stringId] toRow:atom.y andColumn:atom.x];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Failed to load atom");
+        }
+        
+    }];
+    
+    [self render];
+    
+    self.accessoryLabel.text = successfulLoadGridText;
+    [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.accessoryLabel.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        if (self.playControlButton.hidden)
+            self.playControlButton.hidden = NO;
+        [UIView animateWithDuration:0.1 delay:1.6 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.accessoryLabel.alpha = 0;
+        } completion:^(BOOL finished){
+            self.accessoryLabel.text = generatingLinkText;
+            self.shareButton.enabled = YES;
+        }];
+    }];
+    
+}
+
+-(void) clearAtoms {
+    [self.atoms removeAllObjects];
+    [self.grid.rows enumerateObjectsUsingBlock:^(NSMutableArray *cols, NSUInteger idx, BOOL *stop) {
+        [cols enumerateObjectsUsingBlock:^(NSMutableDictionary *map, NSUInteger idx, BOOL *stop) {
+            [map removeAllObjects];
+        }];
+    }];
+}
+
+-(NSArray *) serializeAtoms {
     NSMutableArray *d = [@[] mutableCopy];
     [self.atoms enumerateObjectsUsingBlock:^(Atom *obj, NSUInteger idx, BOOL *stop) {
         [d addObject:[obj serialize]];
@@ -390,39 +479,31 @@ static NSInteger seed = 0;
 }
 
 -(IBAction) shareBoardState:(UIButton *)button {
-    __block BOOL state = self.isPlaying;
     self.shareButton.enabled = NO;
+    self.accessoryLabel.text = generatingLinkText;
+    
+    __block BOOL state = self.isPlaying;
     if (state){
         [self pause];
     }
     
     [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.linkGeneratingLabel.alpha = 1.0;
+        self.accessoryLabel.alpha = 1.0;
     } completion:^(BOOL finished) {
         
-        CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
-        pulse.duration=0.5;
-        pulse.repeatCount=HUGE_VALF;
-        pulse.autoreverses=YES;
-        pulse.fromValue=[NSNumber numberWithFloat:1.0];
-        pulse.toValue=[NSNumber numberWithFloat:0.2];
-        [self.linkGeneratingLabel.layer addAnimation:pulse forKey:@"pulse"];
+        [self addLoadingPulseAnimation];
         
-        NSData *data = [NSJSONSerialization dataWithJSONObject:[self serialize] options:0 error:nil];
+        NSData *data = [NSJSONSerialization dataWithJSONObject:[self serializeAtoms] options:0 error:nil];
         NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSString *encodedString = [jsonString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *params = @{@"atoms": encodedString};
         
-        AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:hostName]];
-        [httpClient setParameterEncoding:AFFormURLParameterEncoding];
-        [httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
-        [httpClient postPath:@"link-for-mobile"
-                  parameters:params
+        [self.httpClient postPath:@"link-for-mobile"
+                  parameters: @{@"atoms": encodedString }
                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
                          NSError *error = nil;
                          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject
                                                                               options:0 error:&error];
-                         [self.linkGeneratingLabel.layer removeAnimationForKey:@"pulse"];
+                         [self removeLoadingPulseAnimation];
                          if (!error && json[@"link"]) {
                              [self shareLink:json[@"link"] andReturnToState:state];
                          } else {
@@ -430,11 +511,25 @@ static NSInteger seed = 0;
                          }
                          
                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                         [self.linkGeneratingLabel.layer removeAnimationForKey:@"pulse"];
+                         [self removeLoadingPulseAnimation];
                          [self handleConnectionError:error];
                      }];
     }];
     
+}
+
+-(void)addLoadingPulseAnimation{
+    CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    pulse.duration=0.5;
+    pulse.repeatCount=HUGE_VALF;
+    pulse.autoreverses=YES;
+    pulse.fromValue=[NSNumber numberWithFloat:1.0];
+    pulse.toValue=[NSNumber numberWithFloat:0.2];
+    [self.accessoryLabel.layer addAnimation:pulse forKey:@"pulse"];
+}
+
+-(void) removeLoadingPulseAnimation {
+    [self.accessoryLabel.layer removeAnimationForKey:@"pulse"];
 }
 
 -(void) shareLink:(NSString *)link andReturnToState:(BOOL)state {
@@ -445,8 +540,6 @@ static NSInteger seed = 0;
     ];
     
     self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    
-    //self.activityViewController
     
     self.activityViewController.excludedActivityTypes = @[
         UIActivityTypePostToWeibo, UIActivityTypePrint
@@ -462,7 +555,7 @@ static NSInteger seed = 0;
     
     [self presentViewController:self.activityViewController animated:YES completion:^{
         [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
-            self.linkGeneratingLabel.alpha = 0.0;
+            self.accessoryLabel.alpha = 0.0;
         } completion:^(BOOL complete){
            self.shareButton.enabled = YES; 
         }];
@@ -471,14 +564,14 @@ static NSInteger seed = 0;
 }
 
 -(void) handleConnectionError:(NSError *)error {
-    self.linkGeneratingLabel.text = errorGeneratingLinkText;
+    self.accessoryLabel.text = errorGeneratingLinkText;
     [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.linkGeneratingLabel.alpha = 1.0;
+        self.accessoryLabel.alpha = 1.0;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.1 delay:1.6 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            self.linkGeneratingLabel.alpha = 0;
+            self.accessoryLabel.alpha = 0;
         } completion:^(BOOL finished){
-            self.linkGeneratingLabel.text = generatingLinkText;
+            self.accessoryLabel.text = generatingLinkText;
             self.shareButton.enabled = YES;
         }];
     }];
@@ -505,6 +598,12 @@ static NSInteger seed = 0;
     [self step];
 }
 
+- (void) didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 -(void)dealloc {
     self.atoms = nil;
     self.grid = nil;
@@ -512,6 +611,7 @@ static NSInteger seed = 0;
     self.timer = nil;
     self.buttonsGrid = nil;
     self.activityViewController = nil;
+    self.httpClient = nil;
     AudioServicesDisposeSystemSoundID(sound0);
     AudioServicesDisposeSystemSoundID(sound1);
     AudioServicesDisposeSystemSoundID(sound2);

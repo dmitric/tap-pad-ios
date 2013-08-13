@@ -71,7 +71,7 @@
 						<string key="NSFrame">{{0, 100}, {320, 321}}</string>
 						<reference key="NSSuperview" ref="752341544"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="514740591"/>
+						<reference key="NSNextKeyView" ref="584816181"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">2</int>
@@ -164,6 +164,7 @@
 								<string key="NSFrame">{{9, 43}, {169, 21}}</string>
 								<reference key="NSSuperview" ref="514740591"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -206,6 +207,7 @@
 						<string key="NSFrame">{{247, 420}, {63, 44}}</string>
 						<reference key="NSSuperview" ref="752341544"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="514740591"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -238,6 +240,7 @@
 						<string key="NSFrame">{{6, 430}, {170, 21}}</string>
 						<reference key="NSSuperview" ref="752341544"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="38243389"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -325,11 +328,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">linkGeneratingLabel</string>
+						<string key="label">accessoryLabel</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="584816181"/>
 					</object>
-					<int key="connectionID">35</int>
+					<int key="connectionID">36</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -457,7 +460,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">35</int>
+			<int key="maxID">36</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -479,19 +482,19 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="accessoryLabel">UILabel</string>
 						<string key="buttonEnclosure">UIView</string>
-						<string key="linkGeneratingLabel">UILabel</string>
 						<string key="playControlButton">UIButton</string>
 						<string key="shareButton">UIButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="accessoryLabel">
+							<string key="name">accessoryLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="buttonEnclosure">
 							<string key="name">buttonEnclosure</string>
 							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="linkGeneratingLabel">
-							<string key="name">linkGeneratingLabel</string>
-							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="playControlButton">
 							<string key="name">playControlButton</string>

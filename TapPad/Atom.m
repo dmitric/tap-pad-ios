@@ -55,4 +55,8 @@
     
 }
 
+-(NSString *)stringId {
+    return [@(self.identifier) description];
+}
+
 @end

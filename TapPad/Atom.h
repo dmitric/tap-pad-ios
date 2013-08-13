@@ -25,6 +25,7 @@
 -(void) move;
 -(NSInteger) nextX;
 -(NSInteger) nextY;
+-(NSString *) stringId;
 
 -(NSDictionary *)serialize;
 
