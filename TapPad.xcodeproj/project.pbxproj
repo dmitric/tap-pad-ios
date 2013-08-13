@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A03C20117B9B5FC004D2B36 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A03C20017B9B5FC004D2B36 /* QuartzCore.framework */; };
 		6A0B1C2217B9784E00E6406E /* TapPadViewController~iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2017B9784E00E6406E /* TapPadViewController~iPhone.xib */; };
 		6A0B1C2317B9784E00E6406E /* TapPadViewController~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2117B9784E00E6406E /* TapPadViewController~iPad.xib */; };
 		6A0B1C2517B97D2200E6406E /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A0B1C2417B97D2200E6406E /* Default-Portrait~ipad.png */; };
@@ -28,9 +29,6 @@
 		6A7B398E17B7815600F088A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B398C17B7815600F088A6 /* InfoPlist.strings */; };
 		6A7B399017B7815600F088A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B398F17B7815600F088A6 /* main.m */; };
 		6A7B399417B7815600F088A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B399317B7815600F088A6 /* AppDelegate.m */; };
-		6A7B399617B7815600F088A6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399517B7815600F088A6 /* Default.png */; };
-		6A7B399817B7815600F088A6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399717B7815600F088A6 /* Default@2x.png */; };
-		6A7B399A17B7815600F088A6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B399917B7815600F088A6 /* Default-568h@2x.png */; };
 		6A7B399D17B7815600F088A6 /* TapPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B399C17B7815600F088A6 /* TapPadViewController.m */; };
 		6A7B39A817B788E200F088A6 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B39A717B788E200F088A6 /* Grid.m */; };
 		6A7B39B317B78F3E00F088A6 /* 0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39AA17B78F3E00F088A6 /* 0.wav */; };
@@ -43,9 +41,13 @@
 		6A7B39BA17B78F3E00F088A6 /* 7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B39B117B78F3E00F088A6 /* 7.wav */; };
 		6A7B39BE17B7908100F088A6 /* Atom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B39BD17B7908100F088A6 /* Atom.m */; };
 		6A7B39C517B7B2E600F088A6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B39C417B7B2E600F088A6 /* AudioToolbox.framework */; };
+		7C51C2734AD34621A82E416E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C02E5CADCF4EDAA94396FA /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28C02E5CADCF4EDAA94396FA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4148AEE447214E349F3F79F4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		6A03C20017B9B5FC004D2B36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6A0B1C2017B9784E00E6406E /* TapPadViewController~iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "TapPadViewController~iPhone.xib"; path = "XIBs/TapPadViewController~iPhone.xib"; sourceTree = "<group>"; };
 		6A0B1C2117B9784E00E6406E /* TapPadViewController~iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "TapPadViewController~iPad.xib"; path = "XIBs/TapPadViewController~iPad.xib"; sourceTree = "<group>"; };
 		6A0B1C2417B97D2200E6406E /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
@@ -96,10 +98,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A03C20117B9B5FC004D2B36 /* QuartzCore.framework in Frameworks */,
 				6A7B39C517B7B2E600F088A6 /* AudioToolbox.framework in Frameworks */,
 				6A7B398417B7815600F088A6 /* UIKit.framework in Frameworks */,
 				6A7B398617B7815600F088A6 /* Foundation.framework in Frameworks */,
 				6A7B398817B7815600F088A6 /* CoreGraphics.framework in Frameworks */,
+				7C51C2734AD34621A82E416E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +153,7 @@
 				6A7B398917B7815600F088A6 /* TapPad */,
 				6A7B398217B7815600F088A6 /* Frameworks */,
 				6A7B398117B7815600F088A6 /* Products */,
+				4148AEE447214E349F3F79F4 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,10 +168,12 @@
 		6A7B398217B7815600F088A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A03C20017B9B5FC004D2B36 /* QuartzCore.framework */,
 				6A7B39C417B7B2E600F088A6 /* AudioToolbox.framework */,
 				6A7B398317B7815600F088A6 /* UIKit.framework */,
 				6A7B398517B7815600F088A6 /* Foundation.framework */,
 				6A7B398717B7815600F088A6 /* CoreGraphics.framework */,
+				28C02E5CADCF4EDAA94396FA /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -227,9 +234,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A7B39A317B7815600F088A6 /* Build configuration list for PBXNativeTarget "TapPad" */;
 			buildPhases = (
+				7DAA8981470D40A8B2F99478 /* Check Pods Manifest.lock */,
 				6A7B397C17B7815600F088A6 /* Sources */,
 				6A7B397D17B7815600F088A6 /* Frameworks */,
 				6A7B397E17B7815600F088A6 /* Resources */,
+				2A591C395B944870BE710F90 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,9 +281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A7B398E17B7815600F088A6 /* InfoPlist.strings in Resources */,
-				6A7B399617B7815600F088A6 /* Default.png in Resources */,
-				6A7B399817B7815600F088A6 /* Default@2x.png in Resources */,
-				6A7B399A17B7815600F088A6 /* Default-568h@2x.png in Resources */,
 				6A7B39B317B78F3E00F088A6 /* 0.wav in Resources */,
 				6A7B39B417B78F3E00F088A6 /* 1.wav in Resources */,
 				6A7B39B517B78F3E00F088A6 /* 2.wav in Resources */,
@@ -302,6 +308,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A591C395B944870BE710F90 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		7DAA8981470D40A8B2F99478 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6A7B397C17B7815600F088A6 /* Sources */ = {
@@ -390,10 +427,12 @@
 		};
 		6A7B39A417B7815600F088A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4148AEE447214E349F3F79F4 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TapPad/TapPad-Prefix.pch";
 				INFOPLIST_FILE = "TapPad/TapPad-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -402,10 +441,12 @@
 		};
 		6A7B39A517B7815600F088A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4148AEE447214E349F3F79F4 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TapPad/TapPad-Prefix.pch";
 				INFOPLIST_FILE = "TapPad/TapPad-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

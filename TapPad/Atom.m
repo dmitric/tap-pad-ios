@@ -45,4 +45,14 @@
     return nextY;
 }
 
+-(NSDictionary *)serialize {
+    return @{
+             @"direction": @(self.direction),
+             @"x": @(self.x),
+             @"y": @(self.y),
+             @"vertical": @(self.vertical)
+        };
+    
+}
+
 @end

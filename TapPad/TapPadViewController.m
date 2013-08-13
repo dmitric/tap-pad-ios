@@ -9,13 +9,20 @@
 #define gridDimension 8
 #define bgRatio (245./256.)
 #define bgColor [UIColor colorWithRed:bgRatio green:bgRatio blue:bgRatio alpha:1]
+#define singleAutomatonColor [UIColor colorWithRed:194/256. green:221./256. blue:255./256. alpha:0.97]
+#define multipleAutomatonColor [UIColor colorWithRed:249./256. green:83./256. blue:59./256. alpha:1.0]
 #define iPhoneCellWidth 39.
 #define iPadCellWidth 88.
+#define hostName @"http://tap-pad.herokuapp.com"
+#define generatingLinkText @"GENERATING LINK..."
+#define errorGeneratingLinkText @"LINK FAILED :("
+#define shareMessage @"Are we just automatons that make beautiful music? Listen to this."
 
 #import "TapPadViewController.h"
 #import "Grid.h"
 #import "Atom.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <AFNetworking/AFNetworking.h>
 
 @interface TapPadViewController (){
     SystemSoundID sound0;
@@ -35,6 +42,7 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSMutableArray *buttonsGrid;
 @property (nonatomic, assign) BOOL isPlaying;
+@property (nonatomic, strong) UIActivityViewController *activityViewController;
 
 @end
 
@@ -43,7 +51,7 @@
 static NSInteger seed = 0;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
         self = [super initWithNibName:[NSString stringWithFormat:@"%@~iPad", nibNameOrNil]
@@ -54,12 +62,17 @@ static NSInteger seed = 0;
     return self;
 }
 
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     
     [super viewDidLoad];
+    
+    self.linkGeneratingLabel.alpha = 0;
+    self.linkGeneratingLabel.text = generatingLinkText;
+    
     self.collisionsLimit = 100;
     self.movesLimit = 300;
+    
 	// Do any additional setup after loading the view, typically from a nib.
     self.grid = [[Grid alloc] initWithDimension:gridDimension];
     self.buttonsGrid = [[NSMutableArray alloc] initWithCapacity:gridDimension];
@@ -118,7 +131,7 @@ static NSInteger seed = 0;
     [self loadSounds];
 }
 
--(void)loadSounds{
+-(void) loadSounds{
     NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound0);
     soundPath = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"wav"];
@@ -137,12 +150,12 @@ static NSInteger seed = 0;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound7);
 }
 
--(void)setPlayButtonTitle:(NSString *)s {
+-(void) setPlayButtonTitle:(NSString *)s {
     [self.playControlButton setTitle:s forState:UIControlStateNormal];
     [self.playControlButton setTitle:s forState:UIControlStateHighlighted];
 }
 
--(void)shrinkBacking:(UIButton *)b {
+-(void) shrinkBacking:(UIButton *)b {
     int y = b.tag/10 - 1;
     int x = b.tag % 10;
     UIView *v = self.buttonsGrid[y][x];
@@ -154,12 +167,12 @@ static NSInteger seed = 0;
     
 }
 
--(BOOL)isValidMove:(NSInteger) x and:(NSInteger) y{
+-(BOOL) isValidMove:(NSInteger) x and:(NSInteger) y{
     return !(x > gridDimension-1 || x < 0
              || y > gridDimension-1 || y < 0);
 }
 
--(void)addAtomWithX:(NSInteger)x andY:(NSInteger)y {
+-(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y {
     if (![self isValidMove:x and:y]){
         NSLog(@"Can't add, outside of bounds");
     }else{
@@ -176,7 +189,7 @@ static NSInteger seed = 0;
     }
 }
 
--(void)tapButton:(UIButton *)b {
+-(void) tapButton:(UIButton *)b {
     int y = b.tag/10 - 1;
     int x = b.tag % 10;
     [self resize:b];
@@ -188,7 +201,7 @@ static NSInteger seed = 0;
     
 }
 
--(void)resize:(UIButton *)b{
+-(void) resize:(UIButton *)b{
     int y = b.tag/10 - 1;
     int x = b.tag % 10;
     UIView *v = self.buttonsGrid[y][x];
@@ -196,7 +209,7 @@ static NSInteger seed = 0;
     
 }
 
--(void)resizeBackingView:(UIView *)v {
+-(void) resizeBackingView:(UIView *)v {
     
     [UIView animateWithDuration:0.1 delay:0.
                         options:UIViewAnimationOptionCurveEaseIn
@@ -205,7 +218,7 @@ static NSInteger seed = 0;
                      } completion:nil];
 }
 
--(void)moveAtom:(Atom *)atom {
+-(void) moveAtom:(Atom *)atom {
     NSInteger curX = atom.x;
     NSInteger curY = atom.y;
     NSInteger nextX = [atom nextX];
@@ -214,9 +227,9 @@ static NSInteger seed = 0;
     if (![self isValidMove:nextX and:nextY]){
         [atom changeDirection];
         if (atom.vertical){
-            [self play:curX];
+            [self playAudio:curX];
         }else{
-            [self play:curY];
+            [self playAudio:curY];
         }
     }
     NSString *atomId = [@(atom.identifier) description];
@@ -230,7 +243,7 @@ static NSInteger seed = 0;
     [self.grid addObject:atom withId:atomId toRow:curY andColumn:curX];
 }
 
--(void)manageHeadOnCollisions:(Atom *)atom {
+-(void) manageHeadOnCollisions:(Atom *)atom {
     int nextX = [atom nextX];
     int nextY = [atom nextY];
     if ([self isValidMove:nextX and:nextY]){
@@ -250,7 +263,7 @@ static NSInteger seed = 0;
     
 }
 
--(void)play:(NSInteger)sound{
+-(void) playAudio:(NSInteger)sound{
     switch (sound) {
         case 0:
             AudioServicesPlaySystemSound(sound0);
@@ -280,22 +293,16 @@ static NSInteger seed = 0;
     
 }
 
--(void)renderAtX:(NSInteger)x andY:(NSInteger)y {
+-(void) renderAtX:(NSInteger)x andY:(NSInteger)y {
     NSInteger count = [self.grid countAtRow:y andCol:x];
     UIView * b = self.buttonsGrid[y][x];
     UIColor *c = nil;
     if (count == 0){
         c = bgColor;
     }else if(count == 1){
-        c = [UIColor colorWithRed:194/256.
-                            green:221./256.
-                            blue:255./256.
-                            alpha:0.97];
+        c = singleAutomatonColor;
     }else{
-        c = [UIColor colorWithRed:249./256.
-                           green:83./256.
-                            blue:59./256.
-                           alpha:1.0];
+        c = multipleAutomatonColor;
     }
     [UIView animateWithDuration:0.1 delay:0.
                         options:UIViewAnimationOptionCurveEaseIn
@@ -305,7 +312,7 @@ static NSInteger seed = 0;
     
 }
 
--(void)render {
+-(void) render {
     for (int j = 0; j < gridDimension; j++) {
         for (int i = 0; i < gridDimension; i++){
             [self renderAtX:i andY:j];
@@ -313,7 +320,7 @@ static NSInteger seed = 0;
     }
 }
 
--(void)manageIntersections {
+-(void) manageIntersections {
     
     for (int j = 0; j < gridDimension; j++) {
         for (int i = 0; i < gridDimension; i++){
@@ -329,36 +336,35 @@ static NSInteger seed = 0;
     
 }
 
-- (void)didReceiveMemoryWarning
+- (void) didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)toggleTime:(UIButton*)sender{
-    self.isPlaying = !self.isPlaying;
-    
+-(IBAction) toggleTime:(UIButton*)sender{
     if (self.isPlaying) {
         [self pause];
     } else {
         [self play];
     }
-    
 }
 
--(void)play {
+-(void) play {
     [self setPlayButtonTitle:@"PAUSE"];
+    self.isPlaying = YES;
     self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self
                                                 selector: @selector(runLoop:) userInfo: nil repeats: YES];
 }
 
 -(void) pause {
     [self setPlayButtonTitle:@"PLAY"];
+    self.isPlaying = NO;
     [self.timer invalidate];
     self.timer = nil;
 }
 
--(void)purgeOldAtoms {
+-(void) purgeOldAtoms {
     NSMutableArray *keep = [@[] mutableCopy];
     
     for (Atom *atom in self.atoms){
@@ -375,20 +381,108 @@ static NSInteger seed = 0;
     
 }
 
--(void)dealloc {
-    self.atoms = nil;
-    self.grid = nil;
-    [self.timer invalidate];
-    self.timer = nil;
-    self.buttonsGrid = nil;
-    AudioServicesDisposeSystemSoundID(sound0);
-    AudioServicesDisposeSystemSoundID(sound1);
-    AudioServicesDisposeSystemSoundID(sound2);
-    AudioServicesDisposeSystemSoundID(sound3);
-    AudioServicesDisposeSystemSoundID(sound4);
-    AudioServicesDisposeSystemSoundID(sound5);
-    AudioServicesDisposeSystemSoundID(sound6);
-    AudioServicesDisposeSystemSoundID(sound7);
+-(NSArray *) serialize {
+    NSMutableArray *d = [@[] mutableCopy];
+    [self.atoms enumerateObjectsUsingBlock:^(Atom *obj, NSUInteger idx, BOOL *stop) {
+        [d addObject:[obj serialize]];
+    }];
+    return d;
+}
+
+-(IBAction) shareBoardState:(UIButton *)button {
+    __block BOOL state = self.isPlaying;
+    self.shareButton.enabled = NO;
+    if (state){
+        [self pause];
+    }
+    
+    [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.linkGeneratingLabel.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        
+        CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        pulse.duration=0.5;
+        pulse.repeatCount=HUGE_VALF;
+        pulse.autoreverses=YES;
+        pulse.fromValue=[NSNumber numberWithFloat:1.0];
+        pulse.toValue=[NSNumber numberWithFloat:0.2];
+        [self.linkGeneratingLabel.layer addAnimation:pulse forKey:@"pulse"];
+        
+        NSData *data = [NSJSONSerialization dataWithJSONObject:[self serialize] options:0 error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *encodedString = [jsonString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *params = @{@"atoms": encodedString};
+        
+        AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:hostName]];
+        [httpClient setParameterEncoding:AFFormURLParameterEncoding];
+        [httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
+        [httpClient postPath:@"link-for-mobile"
+                  parameters:params
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         NSError *error = nil;
+                         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject
+                                                                              options:0 error:&error];
+                         [self.linkGeneratingLabel.layer removeAnimationForKey:@"pulse"];
+                         if (!error && json[@"link"]) {
+                             [self shareLink:json[@"link"] andReturnToState:state];
+                         } else {
+                             [self handleConnectionError:error];
+                         }
+                         
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         [self.linkGeneratingLabel.layer removeAnimationForKey:@"pulse"];
+                         [self handleConnectionError:error];
+                     }];
+    }];
+    
+}
+
+-(void) shareLink:(NSString *)link andReturnToState:(BOOL)state {
+    
+    NSArray * activityItems = @[
+        [NSString stringWithFormat:shareMessage],
+        [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", hostName, link]]
+    ];
+    
+    self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    
+    //self.activityViewController
+    
+    self.activityViewController.excludedActivityTypes = @[
+        UIActivityTypePostToWeibo, UIActivityTypePrint
+    ];
+    
+    __block id myself = self;
+    
+    [self.activityViewController setCompletionHandler:^(NSString *activityType, BOOL completed) {
+        if (state) {
+            [myself play];
+        }
+    }];
+    
+    [self presentViewController:self.activityViewController animated:YES completion:^{
+        [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.linkGeneratingLabel.alpha = 0.0;
+        } completion:^(BOOL complete){
+           self.shareButton.enabled = YES; 
+        }];
+    }];
+    
+}
+
+-(void) handleConnectionError:(NSError *)error {
+    self.linkGeneratingLabel.text = errorGeneratingLinkText;
+    [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.linkGeneratingLabel.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 delay:1.6 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.linkGeneratingLabel.alpha = 0;
+        } completion:^(BOOL finished){
+            self.linkGeneratingLabel.text = generatingLinkText;
+            self.shareButton.enabled = YES;
+        }];
+    }];
+    
 }
 
 -(void)step {
@@ -404,12 +498,29 @@ static NSInteger seed = 0;
             [self manageIntersections];
         }
         [self render];
-        
     }
 }
 
 -(void)runLoop:(id)s{
     [self step];
 }
+
+-(void)dealloc {
+    self.atoms = nil;
+    self.grid = nil;
+    [self.timer invalidate];
+    self.timer = nil;
+    self.buttonsGrid = nil;
+    self.activityViewController = nil;
+    AudioServicesDisposeSystemSoundID(sound0);
+    AudioServicesDisposeSystemSoundID(sound1);
+    AudioServicesDisposeSystemSoundID(sound2);
+    AudioServicesDisposeSystemSoundID(sound3);
+    AudioServicesDisposeSystemSoundID(sound4);
+    AudioServicesDisposeSystemSoundID(sound5);
+    AudioServicesDisposeSystemSoundID(sound6);
+    AudioServicesDisposeSystemSoundID(sound7);
+}
+
 
 @end

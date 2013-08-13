@@ -26,4 +26,6 @@
 -(NSInteger) nextX;
 -(NSInteger) nextY;
 
+-(NSDictionary *)serialize;
+
 @end

@@ -11,7 +11,9 @@
 @interface TapPadViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UIButton *playControlButton;
+@property (nonatomic, weak) IBOutlet UIButton *shareButton;
 @property (nonatomic, weak) IBOutlet UIView *buttonEnclosure;
+@property (nonatomic, weak) IBOutlet UILabel *linkGeneratingLabel;
 @property (nonatomic, assign) CGFloat rate;
 @property (nonatomic, assign) NSInteger collisionsLimit;
 @property (nonatomic, assign) NSInteger movesLimit;
