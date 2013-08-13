@@ -43,6 +43,7 @@ Internationalization
 Tap Pad for iOS currently has localizations for English, French, Japanese and Chinese (Simplified)
 
 Thank you to the following people for their help with translation:
+* [Gwendall Esnault](https://twitter.com/gwendall) (French translation)
 * Chen Bi (Chinese translation)
 
 Web version
