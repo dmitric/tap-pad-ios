@@ -10,42 +10,71 @@
 
 @implementation Atom
 
--(void)changeDirection{
+-(id) initWithX:(NSInteger)x andY:(NSInteger)y
+{
+    self = [self initWithX:x andY:y andDirection:1 andVertical:YES];
+    if (self) {
+        
+    }
+    return self;
+}
+
+-(id) initWithX:(NSInteger)x andY:(NSInteger)y
+   andDirection:(NSInteger)direction andVertical:(BOOL)vertical
+{
+    self = [super init];
+    if (self) {
+        self.x = x;
+        self.y = y;
+        self.vertical = vertical;
+        self.direction = direction;
+    }
+    return self;
+}
+
+-(void) changeDirection
+{
     self.direction *= -1;
     self.collisions++;
 }
 
--(void)collide{
+-(void)collide
+{
     self.vertical = !self.vertical;
     self.collisions++;
 }
 
--(void)move{
+-(void)move
+{
     if (self.vertical) {
         self.y += self.direction;
-    }else{
+    }
+    else {
         self.x += self.direction;
     }
     self.moves++;
 }
 
--(NSInteger)nextX{
+-(NSInteger) nextX
+{
     NSInteger nextX = self.x;
-    if (!self.vertical){
+    if (!self.vertical) {
         nextX += self.direction;
     }
     return nextX;
 }
 
--(NSInteger)nextY {
+-(NSInteger) nextY
+{
     NSInteger nextY = self.y;
-    if (self.vertical){
+    if (self.vertical) {
         nextY += self.direction;
     }
     return nextY;
 }
 
--(NSDictionary *)serialize {
+-(NSDictionary *) serialize
+{
     return @{
              @"direction": @(self.direction),
              @"x": @(self.x),
@@ -55,7 +84,8 @@
     
 }
 
--(NSString *)stringId {
+-(NSString *) stringId
+{
     return [@(self.identifier) description];
 }
 

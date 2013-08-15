@@ -10,10 +10,10 @@
 
 @interface TapPadViewController : UIViewController
 
--(void)loadSound:(NSString *)soundCode;
+-(void) loadSound:(NSString *)soundCode;
 
--(void)pause;
+-(void) pause;
 
--(void)play;
+-(void) play;
 
 @end

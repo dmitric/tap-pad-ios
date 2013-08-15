@@ -40,7 +40,7 @@
     NSString *action = [url.host lowercaseString];
     if (action) {
         if ([action isEqualToString:@"grid"]
-            && url.pathComponents.count > 1){
+            && url.pathComponents.count > 1) {
             NSString *code = url.pathComponents[1];
             [self.viewController loadSound:code];
         }

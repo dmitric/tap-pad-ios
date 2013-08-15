@@ -11,15 +11,16 @@
 @interface Grid : NSObject
 
 @property (nonatomic, assign) NSInteger dimension;
+@property (nonatomic, strong) NSMutableArray *rows;
 
--(id)initWithDimension:(NSInteger)dim;
+-(id) initWithDimension:(NSInteger)dim;
 
 -(void) removeObjectWithId:(NSString *)idKey fromRow:(NSInteger)row andColumn:(NSInteger)col;
 
--(void)addObject:(id)obj withId:(NSString *)idKey toRow:(NSInteger)row andColumn:(NSInteger)col;
+-(void) addObject:(id)obj withId:(NSString *)idKey toRow:(NSInteger)row andColumn:(NSInteger)col;
 
--(NSInteger)countAtRow:(NSInteger)row andCol:(NSInteger)col;
+-(NSInteger) countAtRow:(NSInteger)row andCol:(NSInteger)col;
 
-@property (nonatomic, strong) NSMutableArray *rows;
+
 
 @end

@@ -12,31 +12,38 @@
 
 -(id) initWithDimension:(NSInteger)dim {
     self.dimension = dim;
-    if(self = [super init]){
+    if (self = [super init]) {
         //Create our grid
         self.rows = [[NSMutableArray alloc] initWithCapacity:dim];
         for (int j = 0; j < dim; j++) {
             NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:dim];
-            for (int i = 0; i < dim; i++){
+            for (int i = 0; i < dim; i++) {
                 arr[i] = [@{} mutableCopy];
             }
             [self.rows addObject:arr];
-            
         }
     }
     return self;
 }
 
--(void) removeObjectWithId:(NSString *)idKey fromRow:(NSInteger)row andColumn:(NSInteger)col {
+-(void) removeObjectWithId:(NSString *)idKey fromRow:(NSInteger)row andColumn:(NSInteger)col
+{
     [self.rows[row][col] removeObjectForKey:idKey];
 }
 
--(void)addObject:(id)obj withId:(NSString *)idKey toRow:(NSInteger)row andColumn:(NSInteger)col{
+-(void) addObject:(id)obj withId:(NSString *)idKey toRow:(NSInteger)row andColumn:(NSInteger)col
+{
     self.rows[row][col][idKey] = obj;
 }
 
--(NSInteger)countAtRow:(NSInteger)row andCol:(NSInteger)col {
+-(NSInteger) countAtRow:(NSInteger)row andCol:(NSInteger)col
+{
     return [self.rows[row][col] allKeys].count;
+}
+
+-(void) dealloc
+{
+    self.rows = nil;
 }
 
 

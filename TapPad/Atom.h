@@ -20,6 +20,10 @@
 
 @property (nonatomic, assign) BOOL vertical;
 
+-(id) initWithX:(NSInteger)x andY:(NSInteger)y;
+-(id) initWithX:(NSInteger)x andY:(NSInteger)y
+   andDirection:(NSInteger)direction andVertical:(BOOL)vertical;
+
 -(void) changeDirection;
 -(void) collide;
 -(void) move;

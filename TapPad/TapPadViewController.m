@@ -36,7 +36,8 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AFNetworking/AFNetworking.h>
 
-@interface TapPadViewController (){
+@interface TapPadViewController ()
+{
     SystemSoundID sound0;
     SystemSoundID sound1;
     SystemSoundID sound2;
@@ -71,12 +72,14 @@
 static NSInteger seed = 0;
 
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
     
-    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         self = [super initWithNibName:[NSString stringWithFormat:@"%@~iPad", nibNameOrNil]
                                bundle:nibBundleOrNil];
-    } else {
+    }
+    else {
         self = [super initWithNibName:[NSString stringWithFormat:@"%@~iPhone", nibNameOrNil] bundle:nibBundleOrNil];
     }
     
@@ -111,14 +114,15 @@ static NSInteger seed = 0;
     
     for (int j = 0; j < gridDimension; j++) {
         NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:gridDimension];
-        for (int i = 0; i < gridDimension; i++){
+        for (int i = 0; i < gridDimension; i++) {
             
             CGRect r;
             
-            if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 r = CGRectMake(28.+(1.+iPadCellWidth)*i, 124.+(1.+iPadCellWidth)*j,
                                iPadCellWidth, iPadCellWidth);
-            }else{
+            }
+            else {
                 r = CGRectMake(0.5+(1.+iPhoneCellWidth)*i,
                                101.+(1.+iPhoneCellWidth)*j,
                                iPhoneCellWidth,
@@ -156,7 +160,8 @@ static NSInteger seed = 0;
     [self loadSounds];
 }
 
--(void) loadSounds{
+-(void) loadSounds
+{
     NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"0" ofType:@"wav"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound0);
     soundPath = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"wav"];
@@ -175,12 +180,14 @@ static NSInteger seed = 0;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)([NSURL fileURLWithPath:soundPath]), &sound7);
 }
 
--(void) setPlayButtonTitle:(NSString *)s {
+-(void) setPlayButtonTitle:(NSString *)s
+{
     [self.playControlButton setTitle:NSLocalizedString(s, nil) forState:UIControlStateNormal];
     [self.playControlButton setTitle:NSLocalizedString(s, nil) forState:UIControlStateHighlighted];
 }
 
--(void) shrinkBacking:(UIButton *)b {
+-(void) shrinkBacking:(UIButton *)b
+{
     int y = b.tag/10 - 1;
     int x = b.tag % 10;
     UIView *v = self.buttonsGrid[y][x];
@@ -197,21 +204,20 @@ static NSInteger seed = 0;
              || y > gridDimension-1 || y < 0);
 }
 
--(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y andRender:(BOOL)render{
+-(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y andRender:(BOOL)render
+{
     [self addAtomWithX:x andY:y andDirection:1 andVertical:YES andRender:render];
 }
 
 -(void) addAtomWithX:(NSInteger)x andY:(NSInteger)y andDirection:(NSInteger)d
-         andVertical:(BOOL)vertical andRender:(BOOL)render {
+         andVertical:(BOOL)vertical andRender:(BOOL)render
+{
     
-    if (![self isValidMove:x and:y]){
+    if (![self isValidMove:x and:y]) {
         NSLog(@"Can't add, outside of bounds");
-    }else{
-        Atom *a = [[Atom alloc] init];
-        a.x = x;
-        a.y = y;
-        a.direction = d;
-        a.vertical = vertical;
+    }
+    else {
+        Atom *a = [[Atom alloc] initWithX:x andY:y andDirection:d andVertical:vertical];
         a.identifier = seed++;
         [self.atoms addObject:a];
         [self.grid addObject:a withId:[a stringId]
@@ -222,7 +228,8 @@ static NSInteger seed = 0;
     }
 }
 
--(void) tapButton:(UIButton *)b {
+-(void) tapButton:(UIButton *)b
+{
     int y = b.tag/10 - 1;
     int x = b.tag % 10;
     [self resize:b];
@@ -234,14 +241,16 @@ static NSInteger seed = 0;
     
 }
 
--(void) resize:(UIButton *)b{
+-(void) resize:(UIButton *)b
+{
     int y = b.tag/10 - 1;
     int x = b.tag % 10;
     UIView *v = self.buttonsGrid[y][x];
     [self resizeBackingView:v];
 }
 
--(void) resizeBackingView:(UIView *)v {
+-(void) resizeBackingView:(UIView *)v
+{
     
     [UIView animateWithDuration:0.1 delay:0.
                         options:UIViewAnimationOptionCurveEaseIn
@@ -250,7 +259,8 @@ static NSInteger seed = 0;
                      } completion:nil];
 }
 
--(void) moveAtom:(Atom *)atom {
+-(void) moveAtom:(Atom *)atom
+{
     NSInteger curX = atom.x;
     NSInteger curY = atom.y;
     NSInteger nextX = [atom nextX];
@@ -258,9 +268,10 @@ static NSInteger seed = 0;
     
     if (![self isValidMove:nextX and:nextY]){
         [atom changeDirection];
-        if (atom.vertical){
+        if (atom.vertical) {
             [self playAudio:curX];
-        }else{
+        }
+        else {
             [self playAudio:curY];
         }
     }
@@ -275,17 +286,18 @@ static NSInteger seed = 0;
     [self.grid addObject:atom withId:[atom stringId] toRow:curY andColumn:curX];
 }
 
--(void) manageHeadOnCollisions:(Atom *)atom {
+-(void) manageHeadOnCollisions:(Atom *)atom
+{
     int nextX = [atom nextX];
     int nextY = [atom nextY];
-    if ([self isValidMove:nextX and:nextY]){
-        if ([self.grid countAtRow:nextY andCol:nextX] >= 1){
+    if ([self isValidMove:nextX and:nextY]) {
+        if ([self.grid countAtRow:nextY andCol:nextX] >= 1) {
             NSMutableDictionary *d = self.grid.rows[nextY][nextX];
             for (NSString *otherAtomId in [d allKeys]){
                 Atom *otherAtom = self.grid.rows[nextY][nextX][otherAtomId];
                 BOOL diffDirection = atom.direction != otherAtom.direction;
                 BOOL sameOrientation = atom.vertical == otherAtom.vertical;
-                if (diffDirection && sameOrientation){
+                if (diffDirection && sameOrientation) {
                     [otherAtom changeDirection];
                 }
             }
@@ -295,7 +307,8 @@ static NSInteger seed = 0;
     
 }
 
--(void) playAudio:(NSInteger)sound{
+-(void) playAudio:(NSInteger)sound
+{
     switch (sound) {
         case 0:
             AudioServicesPlaySystemSound(sound0);
@@ -325,15 +338,18 @@ static NSInteger seed = 0;
     
 }
 
--(void) renderAtX:(NSInteger)x andY:(NSInteger)y {
+-(void) renderAtX:(NSInteger)x andY:(NSInteger)y
+{
     NSInteger count = [self.grid countAtRow:y andCol:x];
     UIView * b = self.buttonsGrid[y][x];
     UIColor *c = nil;
-    if (count == 0){
+    if (count == 0) {
         c = bgColor;
-    }else if(count == 1){
+    }
+    else if(count == 1) {
         c = singleAutomatonColor;
-    }else{
+    }
+    else {
         c = multipleAutomatonColor;
     }
     [UIView animateWithDuration:0.1 delay:0.
@@ -344,22 +360,23 @@ static NSInteger seed = 0;
     
 }
 
--(void) render {
+-(void) render
+{
     for (int j = 0; j < gridDimension; j++) {
-        for (int i = 0; i < gridDimension; i++){
+        for (int i = 0; i < gridDimension; i++) {
             [self renderAtX:i andY:j];
         }
     }
 }
 
--(void) manageIntersections {
-    
+-(void) manageIntersections
+{    
     for (int j = 0; j < gridDimension; j++) {
-        for (int i = 0; i < gridDimension; i++){
+        for (int i = 0; i < gridDimension; i++) {
             int sizeOfCell = [self.grid countAtRow:j andCol:i];
-            if (sizeOfCell > 1){
+            if (sizeOfCell > 1) {
                 NSDictionary *d = self.grid.rows[j][i];
-                for (Atom *atom in [d allValues]){
+                for (Atom *atom in [d allValues]) {
                     [atom collide];
                 }
             }
@@ -368,29 +385,34 @@ static NSInteger seed = 0;
     
 }
 
--(IBAction) toggleTime:(UIButton*)sender{
+-(IBAction) toggleTime:(UIButton*)sender
+{
     if (self.isPlaying) {
         [self pause];
-    } else {
+    }
+    else {
         [self play];
     }
 }
 
--(void) play {
+-(void) play
+{
     [self setPlayButtonTitle:@"PAUSE"];
     self.isPlaying = YES;
     self.timer = [NSTimer scheduledTimerWithTimeInterval: self.period target: self
                                                 selector: @selector(runLoop:) userInfo: nil repeats: YES];
 }
 
--(void) pause {
+-(void) pause
+{
     [self setPlayButtonTitle:@"PLAY"];
     self.isPlaying = NO;
     [self.timer invalidate];
     self.timer = nil;
 }
 
--(void) purgeOldAtoms {
+-(void) purgeOldAtoms
+{
     NSMutableArray *keep = [@[] mutableCopy];
     
     for (Atom *atom in self.atoms){
@@ -407,7 +429,8 @@ static NSInteger seed = 0;
     
 }
 
--(void)loadSound:(NSString *)soundCode {
+-(void) loadSound:(NSString *)soundCode
+{
     self.shareButton.enabled = NO;
     [self pause];
     self.accessoryLabel.alpha = 0;
@@ -419,14 +442,15 @@ static NSInteger seed = 0;
         
         [self addLoadingPulseAnimation];
         
-        [self.httpClient postPath:[NSString stringWithFormat:@"grid/%@" ,soundCode] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.httpClient postPath:[NSString stringWithFormat:@"grid/%@", soundCode] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSError *error = nil;
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject
                                                                  options:0 error:&error];
             [self removeLoadingPulseAnimation];
             if (!error && json[@"atoms"]) {
                 [self loadAtoms:json[@"atoms"]];
-            }else{
+            }
+            else {
                 [self handleConnectionError:error];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -437,8 +461,8 @@ static NSInteger seed = 0;
     
 }
 
--(void)loadAtoms:(NSArray *)atomList{
-    
+-(void) loadAtoms:(NSArray *)atomList
+{
     [self clearAtoms];
     [atomList enumerateObjectsUsingBlock:^(NSDictionary *atomDict, NSUInteger idx, BOOL *stop) {
         @try {
@@ -461,8 +485,9 @@ static NSInteger seed = 0;
     [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.accessoryLabel.alpha = 1.0;
     } completion:^(BOOL finished) {
-        if (self.playControlButton.hidden)
+        if (self.playControlButton.hidden) {
             self.playControlButton.hidden = NO;
+        }
         [UIView animateWithDuration:0.1 delay:1.6 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.accessoryLabel.alpha = 0;
         } completion:^(BOOL finished){
@@ -473,7 +498,8 @@ static NSInteger seed = 0;
     
 }
 
--(void) clearAtoms {
+-(void) clearAtoms
+{
     [self.atoms removeAllObjects];
     [self.grid.rows enumerateObjectsUsingBlock:^(NSMutableArray *cols, NSUInteger idx, BOOL *stop) {
         [cols enumerateObjectsUsingBlock:^(NSMutableDictionary *map, NSUInteger idx, BOOL *stop) {
@@ -482,7 +508,8 @@ static NSInteger seed = 0;
     }];
 }
 
--(NSArray *) serializeAtoms {
+-(NSArray *) serializeAtoms
+{
     NSMutableArray *d = [@[] mutableCopy];
     [self.atoms enumerateObjectsUsingBlock:^(Atom *obj, NSUInteger idx, BOOL *stop) {
         [d addObject:[obj serialize]];
@@ -490,12 +517,13 @@ static NSInteger seed = 0;
     return d;
 }
 
--(IBAction) shareBoardState:(UIButton *)button {
+-(IBAction) shareBoardState:(UIButton *)button
+{
     self.shareButton.enabled = NO;
     self.accessoryLabel.text = NSLocalizedString(generatingLinkText, nil);
     
     __block BOOL state = self.isPlaying;
-    if (state){
+    if (state) {
         [self pause];
     }
     
@@ -518,7 +546,8 @@ static NSInteger seed = 0;
                          [self removeLoadingPulseAnimation];
                          if (!error && json[@"link"]) {
                              [self shareLink:json[@"link"] andReturnToState:state];
-                         } else {
+                         }
+                         else {
                              [self handleConnectionError:error];
                          }
                          
@@ -530,7 +559,8 @@ static NSInteger seed = 0;
     
 }
 
--(void)addLoadingPulseAnimation{
+-(void) addLoadingPulseAnimation
+{
     CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
     pulse.duration = 0.5;
     pulse.repeatCount = HUGE_VALF;
@@ -540,13 +570,15 @@ static NSInteger seed = 0;
     [self.accessoryLabel.layer addAnimation:pulse forKey:@"pulse"];
 }
 
--(void)setupFonts {
+-(void)setupFonts
+{
     
-    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         self.shareButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:18];
         self.titleLabel.font = [UIFont fontWithName:@"Raleway-ExtraBold" size:30];
         self.playControlButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:25];
-    }else{
+    }
+    else {
         self.titleLabel.font = [UIFont fontWithName:@"Raleway-ExtraBold" size:25];
         self.shareButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:15];
         self.playControlButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:20];
@@ -554,12 +586,13 @@ static NSInteger seed = 0;
     self.accessoryLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:15];
 }
 
--(void) removeLoadingPulseAnimation {
+-(void) removeLoadingPulseAnimation
+{
     [self.accessoryLabel.layer removeAnimationForKey:@"pulse"];
 }
 
--(void) shareLink:(NSString *)link andReturnToState:(BOOL)state {
-    
+-(void) shareLink:(NSString *)link andReturnToState:(BOOL)state
+{
     NSArray * activityItems = @[
         NSLocalizedString(shareMessage, nil),
         [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", hostName, link]]
@@ -589,7 +622,8 @@ static NSInteger seed = 0;
     
 }
 
--(void) handleConnectionError:(NSError *)error {
+-(void) handleConnectionError:(NSError *)error
+{
     self.accessoryLabel.text = NSLocalizedString(errorGeneratingLinkText, nil);
     [UIView animateWithDuration:0.1 delay:0. options:UIViewAnimationOptionCurveEaseIn animations:^{
         self.accessoryLabel.alpha = 1.0;
@@ -604,14 +638,15 @@ static NSInteger seed = 0;
     
 }
 
--(void)step {
-    if (self.atoms.count > 0){
+-(void)step
+{
+    if (self.atoms.count > 0) {
         [self purgeOldAtoms];
-        for (Atom * a in self.atoms){
+        for (Atom * a in self.atoms) {
             [self moveAtom:a];
         }
-        if (self.atoms.count > 1){
-            for (Atom *a in self.atoms){
+        if (self.atoms.count > 1) {
+            for (Atom *a in self.atoms) {
                 [self manageHeadOnCollisions:a];
             }
             [self manageIntersections];
@@ -620,7 +655,8 @@ static NSInteger seed = 0;
     }
 }
 
--(void)runLoop:(id)s{
+-(void) runLoop:(id)s
+{
     [self step];
 }
 
@@ -630,7 +666,8 @@ static NSInteger seed = 0;
     // Dispose of any resources that can be recreated.
 }
 
--(void)dealloc {
+-(void)dealloc
+{
     self.atoms = nil;
     self.grid = nil;
     [self.timer invalidate];
