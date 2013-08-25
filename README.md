@@ -40,11 +40,12 @@ Screenshot on iPad
 Internationalization
 ----------------------
 
-Tap Pad for iOS currently has localizations for English, French, Japanese, Hebrew, and Chinese (Simplified)
+Tap Pad for iOS currently has localizations for English, Spanish, French, Japanese, Hebrew, and Chinese (Simplified)
 
 Thank you to the following people for their help with translation:
-* [Gwendall Esnault](https://twitter.com/gwendall) (French translation)
-* Chen Bi (Chinese translation)
+* [Gwendall Esnault](https://twitter.com/gwendall) (French)
+* Chen Bi (Chinese)
+* Alejandro C De Baca (Spanish)
 
 Web version
 --------------
