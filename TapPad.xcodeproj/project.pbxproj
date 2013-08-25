@@ -113,6 +113,8 @@
 		6A7B39C417B7B2E600F088A6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6A80F55B17BAE88600B89991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6A80F55C17BAE88600B89991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6AE682F317C9ABC000C028AD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6AE682F417C9ABC000C028AD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6AF5051B17BA2806001F3F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6AF5051D17BA2813001F3F6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6AF5051F17BA2818001F3F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				"zh-Hans",
 				ja,
 				he,
+				es,
 			);
 			mainGroup = 6A7B397717B7815600F088A6;
 			productRefGroup = 6A7B398117B7815600F088A6 /* Products */;
@@ -445,6 +448,7 @@
 				6AF5052017BA94D2001F3F6D /* zh-Hans */,
 				6AF5052217BA9A96001F3F6D /* ja */,
 				6A80F55B17BAE88600B89991 /* he */,
+				6AE682F317C9ABC000C028AD /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -457,6 +461,7 @@
 				6AF5052117BA94D2001F3F6D /* zh-Hans */,
 				6AF5052317BA9A96001F3F6D /* ja */,
 				6A80F55C17BAE88600B89991 /* he */,
+				6AE682F417C9ABC000C028AD /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
